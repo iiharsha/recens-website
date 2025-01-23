@@ -1,10 +1,19 @@
-import { Navbar } from "@/components/layout/navbar";
-import Image from "next/image";
+import HomeVideo from "@/components/sections/HomeVideo";
+import NewArrivals from "@/components/sections/NewArrivals/NewArrivals";
+
+export const metadata = {
+  description: "Recens - Women's Fashion Wear",
+  openGraph: {
+    type: 'website'
+  },
+};
 
 export default function Home() {
   return (
-    <div>
-      hello
-    </div>
-  );
+    <>
+      <HomeVideo />
+      <NewArrivals />
+    </>
+  )
 }
+
