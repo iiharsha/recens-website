@@ -1,9 +1,10 @@
-'use client';
-import { addItem } from '@/components/cart/actions';
-import { ProductVariant } from '@/lib/shopify/types';
-import clsx from 'clsx';
-import { useSearchParams } from 'next/navigation';
-import { useActionState } from 'react';
+"use client";
+
+import { addItem } from "@/components/cart/actions";
+import { ProductVariant } from "@/lib/shopify/types";
+import clsx from "clsx";
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 function LoadingSpinner() {
   return (
@@ -38,12 +39,17 @@ function SubmitButton({
   selectedVariantId: string | undefined;
   isPending: boolean;
 }) {
-  const buttonClasses = 'text-[22px] font-quicksand';
-  const disabledClasses = 'btn-cart-disabled cursor-not-allowed opacity-60 hover:opacity-60';
+  const buttonClasses = "text-[22px] font-quicksand";
+  const disabledClasses =
+    "btn-cart-disabled cursor-not-allowed opacity-60 hover:opacity-60";
 
   if (!availableForSale) {
     return (
-      <button type="button" aria-disabled className={clsx(buttonClasses, disabledClasses)}>
+      <button
+        type="button"
+        aria-disabled
+        className={clsx(buttonClasses, disabledClasses)}
+      >
         Out Of Stock
       </button>
     );
@@ -51,7 +57,11 @@ function SubmitButton({
 
   if (!selectedVariantId) {
     return (
-      <button type="button" aria-disabled className={clsx(buttonClasses, disabledClasses)}>
+      <button
+        type="button"
+        aria-disabled
+        className={clsx(buttonClasses, disabledClasses)}
+      >
         Please select an option
       </button>
     );
@@ -62,8 +72,8 @@ function SubmitButton({
       type="submit"
       aria-label="Add to cart"
       disabled={isPending}
-      className={clsx(buttonClasses, 'btn-cart', {
-        'hover:opacity-90': true,
+      className={clsx(buttonClasses, "btn-cart", {
+        "hover:opacity-90": true,
         [disabledClasses]: isPending,
       })}
     >
@@ -72,7 +82,7 @@ function SubmitButton({
           <LoadingSpinner />
         </div>
       ) : (
-        'Add To Cart'
+        "Add To Cart"
       )}
     </button>
   );
@@ -96,18 +106,29 @@ export function AddToCart({
 
   const selectedVariantId = variant?.id || defaultVariantId;
 
-  // Use null as initial state to match server action expectation
-  const [state, formAction, isPending] = useActionState(
-    async (prevState, formData: FormData) => {
-      // Call addItem with both arguments
-      return addItem(prevState, formData.get('variantId') as string);
-    },
-    null
-  );
+  const [state, setState] = useState<string | null>(null);
+  const [isPending, setIsPending] = useState(false);
+
+  const formAction = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsPending(true);
+
+    const formData = new FormData(event.currentTarget);
+    const variantId = formData.get("variantId") as string;
+
+    try {
+      const result = await addItem(state, variantId);
+      setState(result || "Item added successfully");
+    } catch (error) {
+      setState("Error adding item to cart");
+    } finally {
+      setIsPending(false);
+    }
+  };
 
   return (
-    <form action={formAction}>
-      <input type="hidden" name="variantId" value={selectedVariantId || ''} />
+    <form onSubmit={formAction}>
+      <input type="hidden" name="variantId" value={selectedVariantId || ""} />
       <SubmitButton
         availableForSale={availableForSale}
         selectedVariantId={selectedVariantId}

@@ -1,6 +1,5 @@
 // next
 import type { Metadata } from 'next';
-// import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 // react
@@ -11,22 +10,18 @@ import { HIDDEN_PRODUCT_TAG } from '@/lib/constants';
 import { getProduct } from '@/lib/shopify';
 
 // components
-// import { ProductDescription } from '@/components/product/product-description';
 import ProductDescription from '@/components/product/ProductDescription';
 import ProductSlider from '@/components/product/ProductSlider';
 import RecommendedItems from '@/components/product/RecommendedItems';
 
-// types
-// import { Image } from '@/lib/shopify/types';
-
 export const runtime = 'edge';
 
 export async function generateMetadata({
-    params
+    params,
 }: {
-    params: { handle: string };
+    params: Promise<{ handle: string }>; // Make `params` a Promise
 }): Promise<Metadata> {
-    const { handle } = await params;
+    const { handle } = await params; // Await `params` to access `handle`
 
     const product = await getProduct(handle);
 
@@ -43,8 +38,8 @@ export async function generateMetadata({
             follow: indexable,
             googleBot: {
                 index: indexable,
-                follow: indexable
-            }
+                follow: indexable,
+            },
         },
         openGraph: url
             ? {
@@ -53,16 +48,21 @@ export async function generateMetadata({
                         url,
                         width,
                         height,
-                        alt
-                    }
-                ]
+                        alt,
+                    },
+                ],
             }
-            : null
+            : null,
     };
 }
 
-const ProductPage = async ({ params }: { params: { handle: string } }) => {
-    const product = await getProduct(params.handle);
+const ProductPage = async ({
+    params,
+}: {
+    params: Promise<{ handle: string }>; // Make `params` a Promise
+}) => {
+    const { handle } = await params; // Await `params` to access `handle`
+    const product = await getProduct(handle);
 
     if (!product) return notFound();
 
@@ -79,8 +79,8 @@ const ProductPage = async ({ params }: { params: { handle: string } }) => {
                 : 'https://schema.org/OutOfStock',
             priceCurrency: product.priceRange.minVariantPrice.currencyCode,
             highPrice: product.priceRange.maxVariantPrice.amount,
-            lowPrice: product.priceRange.minVariantPrice.amount
-        }
+            lowPrice: product.priceRange.minVariantPrice.amount,
+        },
     };
 
     return (
@@ -88,7 +88,7 @@ const ProductPage = async ({ params }: { params: { handle: string } }) => {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(productJsonLd)
+                    __html: JSON.stringify(productJsonLd),
                 }}
             />
             <section className="flex w-full flex-col items-center justify-center py-[24px] md:py-[48px]">
@@ -110,3 +110,4 @@ const ProductPage = async ({ params }: { params: { handle: string } }) => {
 };
 
 export default ProductPage;
+

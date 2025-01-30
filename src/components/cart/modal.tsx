@@ -124,12 +124,12 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                                 />
                               </div>
 
-                              <div className="flex flex-1 flex-col  ">
+                              <div className="flex flex-1 flex-col">
                                 <span className="font-lora text-base font-bold leading-tight">
                                   {item.merchandise.product.title}
                                 </span>
                                 {item.merchandise.title !== DEFAULT_OPTION ? (
-                                  <p className="text-sm font-bold text-purple">
+                                  <p className="text-sm font-bold text-purple uppercase">
                                     {item.merchandise.title}
                                   </p>
                                 ) : null}
@@ -141,7 +141,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                                 amount={item.cost.totalAmount.amount}
                                 currencyCode={item.cost.totalAmount.currencyCode}
                               />
-                              <div className="ml-auto flex h-9 flex-row items-center rounded-[8px] bg-lightPurple">
+                              <div className="ml-auto flex h-9 flex-row items-center rounded-[8px] bg-white">
                                 <EditItemQuantityButton item={item} type="minus" />
                                 <p className="w-6 border-x-2 border-purple/50 text-center font-lora font-bold leading-[1]">
                                   <span className="w-full">{item.quantity}</span>
@@ -157,11 +157,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                   <div className="py-4 font-lora text-sm font-bold">
                     <div className="mb-3 flex items-center justify-between border-b border-purple pb-1">
                       <p>Taxes</p>
-                      <Price
-                        className="text-right text-base"
-                        amount={cart.cost.totalTaxAmount.amount}
-                        currencyCode={cart.cost.totalTaxAmount.currencyCode}
-                      />
+                      <p className="text-right">Calculated at checkout</p>
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-purple pb-1 pt-1">
                       <p>Shipping</p>
@@ -176,9 +172,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                       />
                     </div>
                   </div>
-                  <a href={cart.checkoutUrl} className="btn-dark text-center">
-                    Proceed to Checkout
-                  </a>
+                  <a href={cart.checkoutUrl} className="btn-dark text-center">Proceed to Checkout</a>
                 </div>
               )}
             </Dialog.Panel>

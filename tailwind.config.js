@@ -22,10 +22,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
-        // quicksand: ['Quicksand', 'sans-serif'],
-        // lora: ['Lora', 'serif']
-        lora: ["var(--lora)"],
-        quicksand: ["var(--quicksand)"],
+        tenor: "var(--tenor)",
       },
       keyframes: {
         fadeIn: {
@@ -83,4 +80,3 @@ module.exports = {
     }),
   ],
 };
-

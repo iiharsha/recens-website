@@ -1,28 +1,29 @@
-'use client';
+"use client";
 
-import { useRef, useState } from 'react';
-import Image from 'next/image';
-import clsx from 'clsx';
+import { useRef, useState } from "react";
+import Image from "next/image";
+import clsx from "clsx";
 
 // swiper
-import { A11y, Navigation, Thumbs } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { A11y, Navigation, Thumbs } from "swiper/modules";
+import { Swiper as SwiperType } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
 // types
-import { Product } from '@/lib/shopify/types';
+import { Product } from "@/lib/shopify/types";
 
 const ProductSlider = ({ product }: { product: Product }) => {
   // swiper
   const [isStart, setIsStart] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
-  const swiper = useRef<Swiper | null>(null);
-  const [thumbsSwiper, setThumbsSwiper] = useState<Swiper | null>(null);
+  const swiper = useRef<SwiperType | null>(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
     <div className="sticky top-1">
@@ -34,9 +35,13 @@ const ProductSlider = ({ product }: { product: Product }) => {
       <div className="relative">
         <Swiper
           modules={[Navigation, A11y, Thumbs]}
-          navigation={{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
           thumbs={{
-            swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
+            swiper:
+              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
           onSwiper={(s) => {
             swiper.current = s;
@@ -52,9 +57,12 @@ const ProductSlider = ({ product }: { product: Product }) => {
           className="w-full max-w-[80%] rounded-[16px]"
         >
           {product.images.map((image, i) => (
-            <SwiperSlide className="relative aspect-[7/10] cursor-pointer" key={i}>
+            <SwiperSlide
+              className="relative aspect-[7/10] cursor-pointer"
+              key={i}
+            >
               <Image
-                src={image.url || ''}
+                src={image.url || ""}
                 alt={product.title}
                 fill
                 className="object-cover"
@@ -66,10 +74,11 @@ const ProductSlider = ({ product }: { product: Product }) => {
         </Swiper>
         <button
           className={clsx(
-            'absolute right-[1%] top-1/2 font-[swiper-icons] text-[40px] transition-all duration-300 will-change-transform -translate-y-1/2',
+            "absolute right-[1%] top-1/2 font-[swiper-icons] text-[40px] transition-all duration-300 will-change-transform -translate-y-1/2",
             {
-              'text-purple hover:text-darkPurple hover:drop-shadow-lg hover:scale-110': !isEnd,
-              'text-purple/30': isEnd
+              "text-purple hover:text-darkPurple hover:drop-shadow-lg hover:scale-110":
+                !isEnd,
+              "text-purple/30": isEnd,
             }
           )}
           onClick={() => swiper.current?.slideNext()}
@@ -79,10 +88,11 @@ const ProductSlider = ({ product }: { product: Product }) => {
         </button>
         <button
           className={clsx(
-            'absolute left-[1%] top-1/2 font-[swiper-icons] text-[40px] transition-all duration-300 will-change-transform -translate-y-1/2',
+            "absolute left-[1%] top-1/2 font-[swiper-icons] text-[40px] transition-all duration-300 will-change-transform -translate-y-1/2",
             {
-              'text-purple hover:text-darkPurple hover:drop-shadow-lg hover:scale-110': !isStart,
-              'text-purple/30': isStart
+              "text-purple hover:text-darkPurple hover:drop-shadow-lg hover:scale-110":
+                !isStart,
+              "text-purple/30": isStart,
             }
           )}
           onClick={() => swiper.current?.slidePrev()}
@@ -105,7 +115,7 @@ const ProductSlider = ({ product }: { product: Product }) => {
             key={i}
           >
             <Image
-              src={image.url || ''}
+              src={image.url || ""}
               alt={product.title}
               fill
               className="object-cover"
@@ -119,4 +129,3 @@ const ProductSlider = ({ product }: { product: Product }) => {
 };
 
 export default ProductSlider;
-

@@ -1,10 +1,7 @@
-import { Lora, Quicksand } from "next/font/google";
+import { Tenor_Sans } from "next/font/google";
 
-export const lora = Lora({
+export const tenorsans = Tenor_Sans({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--lora",
-});
-export const quicksand = Quicksand({
-  subsets: ["latin"],
-  variable: "--quicksand",
+  variable: "--tenor",
 });
