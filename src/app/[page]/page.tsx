@@ -8,7 +8,7 @@ type PageProps = {
   }>;
 };
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const revalidate = 43200;
 
 export async function generateMetadata({

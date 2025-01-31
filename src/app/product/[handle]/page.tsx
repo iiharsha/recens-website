@@ -14,7 +14,7 @@ import ProductDescription from '@/components/product/ProductDescription';
 import ProductSlider from '@/components/product/ProductSlider';
 import RecommendedItems from '@/components/product/RecommendedItems';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 export async function generateMetadata({
     params,
