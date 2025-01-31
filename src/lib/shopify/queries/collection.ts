@@ -10,6 +10,10 @@ const collectionFragment = /* GraphQL */ `
       ...seo
     }
     updatedAt
+    image {
+      src
+      altText
+    }
   }
   ${seoFragment}
 `;

@@ -1,96 +1,96 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Card } from "./Card";
+import Link from "next/link"
+import Image from "next/image"
+import { Card } from "./Card"
+import ImageSlideshow from "./ImageSlideshow"
 
-const collections = [
+type Media = {
+  type: "slideshow" | "image"
+  src: string[] | string
+}
+
+type Collection = {
+  name: string
+  media: Media
+  link?: string
+  comingSoon?: boolean
+}
+
+const collections: Collection[] = [
   {
     name: "Versatility",
-    image: "/red1_converted.webp",
+    media: {
+      type: "slideshow",
+      src: [
+        "https://ik.imagekit.io/nc0cicxqm/1.webp?updatedAt=1738260313157",
+        "https://ik.imagekit.io/nc0cicxqm/2.webp?updatedAt=1738260313090",
+        "https://ik.imagekit.io/nc0cicxqm/3.webp?updatedAt=1738260313092",
+        "https://ik.imagekit.io/nc0cicxqm/4.webp?updatedAt=1738260313077",
+        "https://ik.imagekit.io/nc0cicxqm/5.webp?updatedAt=1738260313053",
+      ],
+    },
     link: "/search/versatility",
   },
   {
-    name: "Elegance",
-    image: "/placeholder.svg?height=300&width=400",
+    name: "Coming Soon",
+    media: {
+      type: "image",
+      src: "https://ik.imagekit.io/nc0cicxqm/ComingSoon.webp?updatedAt=1738261340515",
+    },
     comingSoon: true,
   },
-  {
-    name: "Comfort",
-    image: "/placeholder.svg?height=300&width=400",
-    comingSoon: true,
-  },
-  {
-    name: "Innovation",
-    image: "/placeholder.svg?height=300&width=400",
-    comingSoon: true,
-  },
-];
+]
 
 export default function CollectionCards() {
-  const [activeCard, setActiveCard] = useState<number | null>(null);
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
       {collections.map((collection, index) => (
-        <div
-          key={index}
-          onClick={() => setActiveCard(activeCard === index ? null : index)}
-        >
+        <div key={index} className="w-full">
           {collection.link && !collection.comingSoon ? (
             <Link href={collection.link} passHref>
-              <Card className="relative overflow-hidden group cursor-pointer">
-                <div className="relative h-[300px]">
-                  <Image
-                    src={collection.image || "/placeholder.svg"}
-                    alt={collection.name}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    className="transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center transition-opacity duration-300 group-hover:bg-opacity-60">
-                    <h2 className="text-white text-2xl font-semibold text-center px-4">
-                      {collection.name}
-                    </h2>
-                  </div>
-                </div>
-                <div
-                  className={`absolute bottom-0 left-0 right-0 bg-white p-4 transform transition-transform duration-300 ${activeCard === index ? "translate-y-0" : "translate-y-full"
-                    }`}
-                >
-                  <span className="text-blue-600 hover:underline font-semibold">
-                    View Collection
-                  </span>
-                </div>
-              </Card>
+              <CollectionCard collection={collection} />
             </Link>
           ) : (
-            <Card className="relative overflow-hidden group cursor-pointer">
-              <div className="relative h-[300px]">
-                <Image
-                  src={collection.image || "/placeholder.svg"}
-                  alt={collection.name}
-                  fill
-                  style={{ objectFit: "cover" }}
-                  className="transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center transition-opacity duration-300 group-hover:bg-opacity-60">
-                  <h2 className="text-white text-2xl font-semibold text-center px-4">
-                    {collection.name}
-                  </h2>
-                </div>
-              </div>
-              <div
-                className={`absolute bottom-0 left-0 right-0 bg-white p-4 transform transition-transform duration-300 ${activeCard === index ? "translate-y-0" : "translate-y-full"
-                  }`}
-              >
-                <span className="text-gray-600 font-semibold">Coming Soon</span>
-              </div>
-            </Card>
+            <CollectionCard collection={collection} />
           )}
         </div>
       ))}
     </div>
-  );
+  )
 }
+
+function CollectionCard({ collection }: { collection: Collection }) {
+  return (
+    <Card className="relative overflow-hidden group cursor-pointer">
+      <div className="relative w-full aspect-[2/3]">
+        {collection.media.type === "slideshow" ? (
+          <ImageSlideshow
+            images={Array.isArray(collection.media.src) ? collection.media.src : [collection.media.src]}
+            interval={3000}
+            className="transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <Image
+            src={(collection.media.src as string) || "/placeholder.svg"}
+            alt={collection.name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            style={{
+              objectFit: "cover",
+              objectPosition: "center top",
+            }}
+            className="transition-transform duration-300 group-hover:scale-105"
+          />
+        )}
+        <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-60">
+        </div>
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 bg-transparent p-4 transform transition-transform duration-300">
+        <span className="text-white font-semibold">{collection.comingSoon ? "Coming Soon" : "View Collection"}</span>
+      </div>
+    </Card>
+  )
+}
+
+

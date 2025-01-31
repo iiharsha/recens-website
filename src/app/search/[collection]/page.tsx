@@ -51,8 +51,8 @@ export default async function CategoryPage({
                 <p className="py-3 text-lg">{`No products found in this collection`}</p>
             ) : (
                 <div className="flex flex-col items-center justify-center gap-[48px]">
-                    <div className="space-y-4">
-                        <h2 className={`${tenorsans.variable} text-3xl capitalize font-tenor`}>
+                    <div className="space-y-4 space-x-4">
+                        <h2 className={`${tenorsans.variable} px-2 font-bold text-3xl capitalize font-tenor`}>
                             {collectionData.title}
                         </h2>
                         {
@@ -71,5 +71,3 @@ export default async function CategoryPage({
         </section>
     )
 }
-
-

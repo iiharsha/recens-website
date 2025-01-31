@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function AboutUs() {
   return (
-    <div className="about-us-container max-w-4xl mx-auto px-4 py-8 space-y-12">
+    <div className="about-us-container max-w-4xl mx-auto px-4 py-8 space-y-12 mb-14">
       <section className="about-us">
         <h1 className="text-4xl font-bold text-gray-800 mb-6">About Us</h1>
         <p className="text-lg leading-relaxed text-gray-600">

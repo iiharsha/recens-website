@@ -49,7 +49,7 @@ export const metadata = {
       images: "/images/screenshots/home.webp",
     },
   }),
-  icons: { icon: "/favicon.png" },
+  icons: { icon: "/favicon.ico" },
 };
 
 export default async function RootLayout({
