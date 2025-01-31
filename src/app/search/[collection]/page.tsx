@@ -4,10 +4,9 @@ import { notFound } from "next/navigation"
 import Grid from "@/components/grid"
 import ProductGridItems from "@/components/layout/product-grid-items"
 import { defaultSort, sorting } from "@/lib/constants"
-import { notEqual } from "assert"
 import { tenorsans } from "@/fonts/fonts"
 
-export const runtime = "edge"
+export const runtime = "nodejs"
 
 export async function generateMetadata({
     params,
