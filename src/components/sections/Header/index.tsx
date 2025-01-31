@@ -11,7 +11,7 @@ import OpenCart from '@/components/cart/open-cart';
 import { Suspense } from 'react';
 import Menu from './Menu';
 import SearchIcon from './SearchIcon';
-import Logo from '@/components/layout/Logo';
+import Logo from '@/components/layout/LogoHeader';
 
 const Header = async () => {
     const menu = await getMenu('nextjs-menu');
