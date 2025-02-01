@@ -13,11 +13,11 @@ export default function CancelRefund() {
     <div className="max-w-4xl mx-auto px-6 py-8 space-y-8">
       {/* Heading */}
       <section className="policy-header">
-        <h1 className="text-4xl font-bold text-gray-800">
+        <h1 className="text-center text-3xl font-semibold text-gray-800">
           Cancellation and Exchange Policy
         </h1>
         <p className="text-lg text-gray-600 mt-4">
-          At <span className="font-bold text-purple-600">Recens</span>, we
+          At <span className="font-bold text-xl">Recens</span>, we
           strive to deliver one-of-a-kind clothing pieces crafted with care and
           precision. While we aim for perfection in every order, we understand
           that sometimes adjustments might be needed. Below are our policies
@@ -47,9 +47,9 @@ export default function CancelRefund() {
             >
               recens.co.in@gmail.com
             </a>
-            or{" "}
-            <a href="tel:+91 8522999131" className="text-purple-600 underline">
-              +91 8522999131
+            {" "}or{" "}
+            <a href="tel:+91 9949489384" className="text-purple-600 underline">
+              +91 9949489384
             </a>{" "}
             with your order details.
           </li>

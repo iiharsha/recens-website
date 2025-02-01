@@ -67,9 +67,9 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-lightPurple bg-white/70 px-4 pb-6 pt-2 text-darkPurple backdrop-blur-lg md:w-[390px]">
+            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-stone-500 bg-white/50 bg-opacity-60 px-4 pb-6 pt-2 backdrop-blur-md md:w-[390px]">
               <div className="flex items-center justify-between">
-                <p className="font-lora text-[28px] font-bold">My Cart</p>
+                <p className="font-semibold text-xl">My Cart</p>
 
                 <button aria-label="Close cart" onClick={closeCart}>
                   <CloseCart />
@@ -79,7 +79,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
               {!cart || cart.lines.length === 0 ? (
                 <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
                   <Image src="/images/cart.png" width="36" height="36" alt="cart" />
-                  <p className="mt-6 text-center font-quicksand text-2xl font-bold">
+                  <p className="mt-6 text-center text-2xl font-semibold">
                     Your cart is empty.
                   </p>
                 </div>
@@ -101,7 +101,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                       );
 
                       return (
-                        <li key={i} className="flex w-full flex-col border-b border-purple">
+                        <li key={i} className="flex w-full flex-col border-b border-stone-500">
                           <div className="relative flex w-full flex-row justify-between px-1 py-4">
                             <div className="absolute z-40 -mt-2 ml-[55px]">
                               <DeleteItemButton item={item} />
@@ -154,14 +154,14 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                       );
                     })}
                   </ul>
-                  <div className="py-4 font-lora text-sm font-bold">
+                  <div className="py-4 text-sm font-semibold">
                     <div className="mb-3 flex items-center justify-between border-b border-purple pb-1">
                       <p>Taxes</p>
-                      <p className="text-right">Calculated at checkout</p>
+                      <p className="text-right">Items price inclusive of Tax</p>
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-purple pb-1 pt-1">
                       <p>Shipping</p>
-                      <p className="text-right">Calculated at checkout</p>
+                      <p className="text-right">FREE for PAN India</p>
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-purple pb-1 pt-1">
                       <p>Total</p>

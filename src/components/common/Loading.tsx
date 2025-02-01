@@ -1,39 +1,61 @@
-'use client';
+"use client"
 
-// React
-import { FC } from 'react';
+import type { FC } from "react"
 
 const Loading: FC = () => {
   return (
     <div className="flex items-center justify-center">
       <LoadingSpinner />
     </div>
-  );
-};
+  )
+}
 
 const LoadingSpinner: FC = () => {
   return (
-    <svg
-      className="inline-block animate-spin"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <path
-        d="M12 2v4m0 12v4m10-10h-4M6 12H2m3.343-5.657L4.929 4.929m12.728 12.728 1.414 1.414"
-        className="opacity-75"
-      />
-      <path
-        d="M12 2a10 10 0 1 0 10 10"
-        className="text-white/30"
+    <svg className="inline-block" width="32" height="32" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" stroke="rgba(0,0,0,0.2)" strokeWidth="3" fill="none" />
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="black"
+        strokeWidth="3"
+        fill="none"
         strokeLinecap="round"
-      />
+        strokeDasharray="16 44"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 12 12"
+          to="360 12 12"
+          dur="1s"
+          repeatCount="indefinite"
+        />
+      </circle>
+      <circle
+        cx="12"
+        cy="12"
+        r="6"
+        stroke="rgba(0,0,0,0.6)"
+        strokeWidth="3"
+        fill="none"
+        strokeLinecap="round"
+        strokeDasharray="10 28"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 12 12"
+          to="-360 12 12"
+          dur="1.5s"
+          repeatCount="indefinite"
+        />
+      </circle>
     </svg>
-  );
-};
+  )
+}
 
-export default Loading;
+export default Loading
+
 

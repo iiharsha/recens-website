@@ -15,6 +15,7 @@ import { ensureStartsWith } from "@/lib/utils";
 
 // styles
 import "@/styles/globals.css";
+import { getMenu } from "@/lib/shopify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,6 +53,7 @@ export const metadata = {
   icons: { icon: "/favicon.ico" },
 };
 
+
 export default async function RootLayout({
   children,
 }: {
@@ -59,7 +61,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-neutral-100`}>
         <Suspense fallback={<Loading />}>
           <Header />
           <main>{children}</main>

@@ -51,12 +51,12 @@ export default async function CategoryPage({
             ) : (
                 <div className="flex flex-col items-center justify-center gap-[48px]">
                     <div className="space-y-4 space-x-4">
-                        <h2 className={`${tenorsans.variable} px-2 font-bold text-3xl capitalize font-tenor`}>
+                        <h2 className={`${tenorsans.variable} px-2 font-semibold text-3xl capitalize font-tenor flex items-center justify-center`}>
                             {collectionData.title}
                         </h2>
                         {
                             collectionData.description && (
-                                <p className="max-w-4xl text-lg text-neutral-700">
+                                <p className="max-w-4xl text-lg text-gray-900">
                                     {collectionData.description}
                                 </p>
                             )

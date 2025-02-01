@@ -1,29 +1,26 @@
-// next
-import Image from 'next/image';
-import Link from 'next/link';
-
-// data
-import socialMediaItems from '@/data/social-media.json';
+import Image from "next/image"
+import Link from "next/link"
+import socialMediaItems from "@/data/social-media.json"
 
 const SocialMedia = () => {
   return (
-    <div className="flex w-full flex-col items-center gap-3 md:items-start md:justify-start">
-      <h3 className="text-[20px] font-semibold text-veryDarkPurple">Follow us</h3>
-      <div className="flex w-full items-center justify-center gap-4 [&_a]:transition-all [&_a]:duration-300 hover:[&_a]:rounded-full hover:[&_a]:shadow-sm hover:[&_a]:brightness-75">
-        {socialMediaItems.map((socialMediaItem, i) => (
+    <div>
+      <div className="flex space-x-4">
+        {socialMediaItems.map((item, i) => (
           <Link
-            href={socialMediaItem.url}
+            href={item.url}
             key={i}
             target="_blank"
-            title={socialMediaItem.title}
-            className="flex-shrink-0"
+            title={item.title}
+            className="hover:text-gray-600 transition-colors"
           >
-            <Image src={socialMediaItem.image} alt={socialMediaItem.title} width="33" height="33" />
+            <Image src={item.image || "/placeholder.svg"} alt={item.title} width={24} height={24} />
           </Link>
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SocialMedia;
+export default SocialMedia
+

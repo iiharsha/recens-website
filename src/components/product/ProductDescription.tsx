@@ -10,11 +10,13 @@ import { AddToCart } from '../cart/add-to-cart';
 import { Product } from '@/lib/shopify/types';
 import { useSearchParams } from 'next/navigation';
 import { VariantSelector } from './VariantSelector';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 export type Combination = {
   id: string;
   availableForSale: boolean;
   price: string;
-  [key: string]: string | boolean; // ie. { color: 'Red', size: 'Large', ... }
+  [key: string]: string | boolean;
 };
 
 const ProductDescription = ({ product }: { product: Product }) => {
@@ -26,7 +28,6 @@ const ProductDescription = ({ product }: { product: Product }) => {
         id: variant.id,
         availableForSale: variant.availableForSale,
         price: variant.price.amount,
-        // Adds key / value pairs for each variant (ie. "color": "Black" and "size": 'M").
         ...variant.selectedOptions.reduce(
           (accumulator, option) => ({ ...accumulator, [option.name.toLowerCase()]: option.value }),
           {}
@@ -61,8 +62,11 @@ const ProductDescription = ({ product }: { product: Product }) => {
       </p>
       <div className="h-[1px] w-full bg-purple"></div>
       <VariantSelector options={product.options} combinations={combinations} />
+      <Link href="/sizeguide" className="flex items-center gap-1 underline">
+        Size Chart <ArrowRight className="w-4 h-4" />
+      </Link>
       <div>
-        <p className="mb-2 text-[26px]">Description</p>
+        <p className="mb-2 text-xl font-semibold">Description</p>
         <div
           dangerouslySetInnerHTML={{ __html: product.descriptionHtml as string }}
           className="text-[18px] text-darkPurple"

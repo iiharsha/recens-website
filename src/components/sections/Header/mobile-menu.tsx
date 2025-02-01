@@ -61,7 +61,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                         leaveFrom="translate-x-0"
                         leaveTo="translate-x-[-100%]"
                     >
-                        <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-white/70 pb-6 backdrop-blur-lg ">
+                        <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-white/50 pb-6 backdrop-blur-md ">
                             <div className="px-4 pb-4 pt-2">
                                 <div className="mb-4 text-darkPurple">
                                     <Hamburger

@@ -13,6 +13,7 @@ import { getProduct } from '@/lib/shopify';
 import ProductDescription from '@/components/product/ProductDescription';
 import ProductSlider from '@/components/product/ProductSlider';
 import RecommendedItems from '@/components/product/RecommendedItems';
+import Loading from '@/components/common/Loading';
 
 export const runtime = 'nodejs';
 
@@ -101,7 +102,7 @@ const ProductPage = async ({
                         <ProductDescription product={product} />
                     </div>
                 </article>
-                <Suspense>
+                <Suspense fallback={<Loading />}>
                     <RecommendedItems productId={product.id} />
                 </Suspense>
             </section>

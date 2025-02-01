@@ -10,8 +10,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function ShippingPolicy() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-14 space-y-4">
-      <h1 className="font-bold text-4xl">Shipping Policy</h1>
+    <div className="min-h-[50vh] sm:mb-12 max-w-4xl mx-auto px-4 py-14 space-y-4">
+      <h1 className="font-semibold text-3xl text-center">Shipping Policy</h1>
       <h3>Last Updated on Jan 4 2025</h3>
       <p>
         For International buyers, orders are shipped and delivered through

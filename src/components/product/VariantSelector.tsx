@@ -35,7 +35,7 @@ export function VariantSelector({
       className="flex flex-col items-start justify-start gap-2"
       key={option.id}
     >
-      <dt className="text-[26px]">{option.name}</dt>
+      <dt className="text-xl">{option.name}</dt>
       <dd className="flex flex-wrap gap-3">
         {option.values.map((value) => {
           const optionNameLowerCase = option.name.toLowerCase();
@@ -84,13 +84,12 @@ export function VariantSelector({
               disabled={!isAvailableForSale}
               onClick={() => router.replace(optionUrl, { scroll: false })}
               // onClick={() => router.push(optionUrl, { scroll: false })}
-              title={`${option.name} ${value}${
-                !isAvailableForSale ? " (Out of Stock)" : ""
-              }`}
+              title={`${option.name} ${value}${!isAvailableForSale ? " (Out of Stock)" : ""
+                }`}
               className={clsx(
                 "rounded-[16px] border border-2 px-[16px] py-[8px] text-[18px] font-medium transition-all duration-300 will-change-transform uppercase",
                 {
-                  "cursor-default border-darkPurple": isActive,
+                  "cursor-default bg-darkPurple text-white": isActive,
                   "border-transparent hover:bg-purple hover:text-white ":
                     !isActive && isAvailableForSale,
                   "relative z-10 cursor-not-allowed overflow-hidden bg-neutral-100 text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 before:dark:bg-neutral-700":
