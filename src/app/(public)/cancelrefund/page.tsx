@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Cancellationa/Refund",
+    title: "Cancellation/Refund",
     description: "Know about item cancellation or refund.",
     keywords: ["help", "exchange", "return", "cancel", "refund"],
   };
