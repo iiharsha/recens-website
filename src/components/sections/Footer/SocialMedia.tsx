@@ -14,7 +14,7 @@ const SocialMedia = () => {
             title={item.title}
             className="hover:text-gray-600 transition-colors"
           >
-            <Image src={item.image || "/placeholder.svg"} alt={item.title} width={24} height={24} />
+            <Image src={item.image || "/placeholder.svg"} alt={item.title} width={24} height={24} priority />
           </Link>
         ))}
       </div>

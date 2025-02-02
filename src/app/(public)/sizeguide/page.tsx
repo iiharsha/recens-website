@@ -1,3 +1,5 @@
+import { tenorsans } from "@/fonts/fonts";
+
 export default function SizeGuide() {
     const sizeData = {
         sizes: [
@@ -11,14 +13,14 @@ export default function SizeGuide() {
 
     return (
         <main className="max-w-4xl mx-auto mt-4 mb-12 px-4 py-4 space-y-8 min-h-[50vh]">
-            <h3 className="text-3xl font-semibold text-center">Size Guide</h3>
+            <h2 className={`${tenorsans.variable} font-tenor text-center text-3xl sm:text-4xl font-semibold mb-6`}>Size Guide</h2>
             <p className="text-lg text-center text-gray-800">**All the sizes mentioned below are in inches**</p>
             <div>
                 <table className="w-full border border-stone-300">
                     <thead className="bg-stone-300">
                         <tr>
                             {["Size", "Bust", "Waist", "Hips"].map((col) => (
-                                <th key={col} className="border border-gray-300 px-4 py-2 text-left">{col}</th>
+                                <th key={col} className={`${tenorsans.variable} font-tenor border border-gray-300 px-4 py-2 text-left`}>{col}</th>
                             ))}
                         </tr>
                     </thead>

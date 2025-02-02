@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Card } from "./Card"
 import ImageSlideshow from "./ImageSlideshow"
+import { tenorsans } from "@/fonts/fonts"
 
 type Media = {
   type: "slideshow" | "image"
@@ -83,14 +84,25 @@ function CollectionCard({ collection }: { collection: Collection }) {
             className="transition-transform duration-300 group-hover:scale-105"
           />
         )}
-        <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-60">
+
+        {/* Overlay Background */}
+        <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-60"></div>
+
+        {/* Collection Name Title */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span className={`${tenorsans.variable} text-white font-tenor text-3xl font-semibold`}>
+            {collection.name}
+          </span>
         </div>
       </div>
+
+      {/* Bottom Text */}
       <div className="absolute bottom-0 left-0 right-0 bg-transparent p-4 transform transition-transform duration-300">
         <span className="text-white font-semibold">{collection.comingSoon ? "Coming Soon" : "View Collection"}</span>
       </div>
     </Card>
-  )
+  );
 }
+
 
 

@@ -63,11 +63,11 @@ const ProductCard = ({
           </div>
         </a>
         <a href={'/product/' + product.handle}>
-          <h3 className="text-center text-[clamp(20px,8px_+_2vw,22px)] font-semibold text-darkPurple transition-all duration-300 hover:text-purple">
+          <h3 className="text-center text-[clamp(20px,8px_+_2vw,22px)] font-semibold transition-all duration-300 hover:text-purple">
             {product.title}
           </h3>
         </a>
-        <p className="font-lora text-[clamp(20px,8px_+_2vw,24px)] text-darkPurple">
+        <p className="text-[clamp(20px,8px_+_2vw,24px)] text-darkPurple">
           {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(
             Number(product.priceRange.minVariantPrice.amount)
           )}

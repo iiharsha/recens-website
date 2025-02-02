@@ -12,6 +12,7 @@ import CloseCart from './close-cart';
 import { DeleteItemButton } from './delete-item-button';
 import { EditItemQuantityButton } from './edit-item-quantity-button';
 import OpenCart from './open-cart';
+import { ArrowRight } from 'lucide-react';
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -172,13 +173,17 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                       />
                     </div>
                   </div>
-                  <a href={cart.checkoutUrl} className="btn-dark text-center">Proceed to Checkout</a>
+                  <a href={cart.checkoutUrl} className={`bg-black px-[32px] text-white rounded-lg font-semibold
+                    py-[16px] text-center flex justify-center gap-2 hover:text-xl transition-all duration-300 ease-in-out`}>
+                    Proceed to Checkout
+                    <ArrowRight />
+                  </a>
                 </div>
               )}
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>
-      </Transition>
+      </Transition >
     </>
   );
 }

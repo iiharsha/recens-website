@@ -16,7 +16,7 @@ export default function Campaign() {
     <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
       <div className="text-center space-y-4">
         <h1
-          className={`${tenorsans.variable} font-tenor text-4xl sm:text-5xl md:text-5xl`}
+          className={`${tenorsans.variable} font-tenor sm:text-4xl text-3xl sm:text-5xl md:text-5xl`}
         >
           The Ultimate Recens Collection
         </h1>

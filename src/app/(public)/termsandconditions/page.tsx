@@ -1,7 +1,9 @@
+import { tenorsans } from "@/fonts/fonts";
+
 export default function TermsAndConditions() {
   return (
     <div className="min-h-[50vh] mb-12 max-w-4xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Terms and Conditions</h1>
+      <h2 className={`${tenorsans.variable} font-tenor text-center text-3xl sm:text-4xl font-semibold mb-6`}>Terms And Conditions</h2>
       <div className="border-b border-gray-300 mb-6"></div>
       <p className="text-lg mb-4">Last updated on Jan 4th, 2025</p>
 

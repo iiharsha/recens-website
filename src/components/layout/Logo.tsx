@@ -14,7 +14,7 @@ const Logo = ({ size, className }: { size: 'sm' | 'lg'; className?: string }) =>
                 'h-[40px] xl:h-[52px]': size === 'sm',
                 'h-[64px] md:h-[100px]': size === 'lg'
             })}
-            alt="logo"
+            alt="Recens Logo"
             priority
         />
     );

@@ -1,11 +1,12 @@
 import { Metadata } from "next";
+import { tenorsans } from "@/fonts/fonts";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Contact Us",
     description:
       "Contact Recens for any kind of queries or customizing options",
-    keywords: ["conatct", "help", "customize", "report"],
+    keywords: ["contact", "help", "customize", "report"],
   };
 }
 
@@ -13,7 +14,7 @@ export default function ContactUs() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-24 space-y-12 min-h-[60vh]">
       <section className="contact-us">
-        <h2 className="flex items-center justify-center text-3xl font-semibold mb-6">Contact Us</h2>
+        <h2 className={`${tenorsans.variable} font-tenor text-center text-3xl sm:text-4xl font-semibold mb-6`}>Contact Us</h2>
         <p className="text-lg leading-relaxed text-gray-800">
           We’re here to assist you with any questions, inquiries, or custom
           order requests. Reach out to us:
