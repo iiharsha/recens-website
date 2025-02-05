@@ -1,21 +1,24 @@
+import { GoogleTagManager } from "@next/third-parties/google"
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 import { ReactNode, Suspense } from "react";
 import Loading from "@/components/common/Loading";
 import Header from "@/components/sections/Header";
-const loading = () => <Loading />;
+import { getMenu } from "@/lib/shopify";
+import Head from "next/head";
+import { Viewport } from "next";
+import { ensureStartsWith } from "@/lib/utils";
 
 // components
+const loading = () => <Loading />;
 const Footer = dynamic(() => import("@/components/sections/Footer"), {
   loading,
 });
 
-// utils
-import { ensureStartsWith } from "@/lib/utils";
 
 // styles
 import "@/styles/globals.css";
-import { getMenu } from "@/lib/shopify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,7 +35,7 @@ const twitterSite = TWITTER_SITE
   : undefined;
 
 export const metadata = {
-  metadataBase: new URL(baseUrl || 'http://localhost:3000'),
+  metadataBase: new URL(baseUrl),
   title: {
     default: SITE_NAME!,
     template: `%s | ${SITE_NAME}`,
@@ -50,9 +53,22 @@ export const metadata = {
       images: "/images/screenshots/home.webp",
     },
   }),
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
+    other: {
+      rel: '/',
+      url: '/android-chrome-192x192.png',
+      sizes: '192x192',
+      type: 'image/png',
+    },
+  },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+}
 
 export default async function RootLayout({
   children,
@@ -61,6 +77,11 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-PWQRW7QQ" />
+      <GoogleAnalytics gaId="G-8XGNZRV5GF" />
+      <Head>
+        <link rel='canonical' href="https://recens.co.in" key='canonical'></link>
+      </Head>
       <body className={`${inter.className} bg-neutral-100`}>
         <Suspense fallback={<Loading />}>
           <Header />
