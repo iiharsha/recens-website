@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GoogleTagManager } from "@next/third-parties/google"
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Inter } from "next/font/google";
@@ -85,7 +86,10 @@ export default async function RootLayout({
       <body className={`${inter.className} bg-neutral-100`}>
         <Suspense fallback={<Loading />}>
           <Header />
-          <main>{children}</main>
+          <main>
+            {children}
+            <SpeedInsights />
+          </main>
           <Footer />
         </Suspense>
       </body>
