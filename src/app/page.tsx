@@ -10,6 +10,10 @@ const AboutUs = dynamic(() => import('@/components/sections/AboutUs'), {
   loading
 });
 
+const Discounts = dynamic(() => import('@/components/sections/Discounts'), {
+  loading
+});
+
 export const metadata = {
   description: "Recens - Women's Fashion Wear",
   openGraph: {
@@ -21,6 +25,7 @@ export default function Home() {
   return (
     <>
       <HomeVideo />
+      <Discounts />
       <NewArrivals />
       <AboutUs />
     </>
