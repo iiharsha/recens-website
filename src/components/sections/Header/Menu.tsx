@@ -9,7 +9,7 @@ const Menu = ({ menu }: { menu: MenuType[] }) => {
     return (
         <>
             {menu.length ? (
-                <ul className="hidden h-full gap-[16px] text-base font-medium text-veryDarkPurple md:flex md:items-center lg:gap-[24px] lg:text-[18px] xl:gap-[48px]">
+                <ul className="hidden h-full gap-[16px] text-base md:flex md:items-center lg:gap-[24px] lg:text-[18px] xl:gap-[48px]">
                     {menu.map((item: MenuType) => (
                         <li
                             key={item.title}
