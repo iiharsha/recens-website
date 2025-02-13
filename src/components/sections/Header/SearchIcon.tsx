@@ -41,11 +41,7 @@ const SearchIcon = () => {
                     >
                         <LazyMotion features={domAnimation}>
                             <m.div
-<<<<<<< HEAD
-                                className="absolute left-0 right-0 top-[80px] flex h-[50px] items-center justify-center backdrop-blur-sm"
-=======
                                 className="absolute left-0 right-0 top-[1px] flex h-[110px] items-center justify-center backdrop-blur-sm bg-black/10"
->>>>>>> testbranch1
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}

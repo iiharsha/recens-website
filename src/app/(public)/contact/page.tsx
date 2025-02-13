@@ -23,15 +23,6 @@ export default function ContactUs() {
           <p className="text-lg text-gray-800">
             📧 Email:{" "}
             <a
-              href="mailto:harshavadluri.dev@gmail.com"
-              className="text-purple-600 underline"
-            >
-              harshavadluri.dev@gmail.com
-            </a>
-          </p>
-          <p className="text-lg text-gray-800">
-            📧 Company Email:{" "}
-            <a
               href="mailto:recens.co.in@gmail.com"
               className="text-purple-600 underline"
             >

@@ -67,11 +67,7 @@ const ProductCard = ({
             {product.title}
           </h3>
         </a>
-<<<<<<< HEAD
-        <p className="text-[clamp(14px,6px_+_2vw,14px)] text-gray-600">
-=======
         <p className="text-[clamp(14px,6px_+_2vw,14px)] text-black/80">
->>>>>>> testbranch1
           {`RS. ${Intl.NumberFormat("en-IN", {
             useGrouping: true,
           }).format(Number(product.priceRange.minVariantPrice.amount))}`}
