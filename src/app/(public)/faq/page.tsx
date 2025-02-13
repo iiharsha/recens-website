@@ -23,7 +23,7 @@ export default function Faq() {
             <Accordion type="single" collapsible className="w-full">
                 <h3 className="text-xl font-medium px-4">Payment</h3>
                 <AccordionItem value="item-1" className="m-2">
-                    <AccordionTrigger className="text-md sm:text-xl font-normal h-14 bg-stone-300 rounded-xl px-4">What forms of payment do you accept?</AccordionTrigger>
+                    <AccordionTrigger className="text-md sm:text-xl font-normal h-14 bg-secondary rounded-xl px-4">What forms of payment do you accept?</AccordionTrigger>
                     <AccordionContent className="text-lg text-gray-600 mt-4 px-4">
                         We accept variety of payment methods, including:
                         <ul className="list-disc list-inside text-gray-900">
@@ -36,14 +36,14 @@ export default function Faq() {
                 </AccordionItem>
                 <h3 className="text-xl font-medium px-4">Shipping</h3>
                 <AccordionItem value="item-2" className="m-2">
-                    <AccordionTrigger className="text-md sm:text-xl font-normal h-12 bg-stone-300 rounded-xl px-4">How long for my order to arrive?</AccordionTrigger>
+                    <AccordionTrigger className="text-md sm:text-xl font-normal h-12 bg-secondary rounded-xl px-4">How long for my order to arrive?</AccordionTrigger>
                     <AccordionContent className="text-lg text-gray-600 mt-4 px-4">
                         In most cases, orders are delivered within <span className="font-semibold">2 to 7 days.</span>
                         However, deliveries to remote areas in India may take longer depending on the courier company's policies and service availability.
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3" className="m-2">
-                    <AccordionTrigger className="text-md sm:text-xl font-normal h-12 bg-stone-300 rounded-xl px-4">How much does it cost?</AccordionTrigger>
+                    <AccordionTrigger className="text-md sm:text-xl font-normal h-12 bg-secondary rounded-xl px-4">How much does it cost?</AccordionTrigger>
                     <AccordionContent className="text-lg text-gray-600 mt-4 px-4">
                         We provide free shipping for orders accross PAN India.
                         International orders will be charged seperately.
@@ -51,7 +51,7 @@ export default function Faq() {
                 </AccordionItem>
                 <h3 className="text-xl font-medium px-4">Orders</h3>
                 <AccordionItem value="item-4" className="m-2">
-                    <AccordionTrigger className="text-md sm:text-xl font-normal h-12 bg-stone-300 rounded-xl px-4">How to cancel my order?</AccordionTrigger>
+                    <AccordionTrigger className="text-md sm:text-xl font-normal h-12 bg-secondary rounded-xl px-4">How to cancel my order?</AccordionTrigger>
                     <AccordionContent className="text-xl">
                         <p className="text-lg text-gray-600 mt-4 px-4">
                             You may cancel your order within <span className="font-semibold">24 hours</span> of placing it.
@@ -63,7 +63,7 @@ export default function Faq() {
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-5" className="m-2">
-                    <AccordionTrigger className="text-md sm:text-xl px-4 h-12 font-normal bg-stone-300 rounded-xl">How can I get an exchange on my order?</AccordionTrigger>
+                    <AccordionTrigger className="text-md sm:text-xl px-4 h-12 font-normal bg-secondary rounded-xl">How can I get an exchange on my order?</AccordionTrigger>
                     <AccordionContent className="text-xl">
                         <p className="text-lg text-gray-600 mt-4 px-4">
                             <span className="font-semibold">Returns are not allowed.</span> However,
@@ -89,7 +89,7 @@ export default function Faq() {
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-6" className="m-2">
-                    <AccordionTrigger className="text-md sm:text-xl px-4 h-12 font-normal bg-stone-300 rounded-xl">How can I find my size?</AccordionTrigger>
+                    <AccordionTrigger className="text-md sm:text-xl px-4 h-12 font-normal bg-secondary rounded-xl">How can I find my size?</AccordionTrigger>
                     <AccordionContent className="text-xl">
                         <p className="text-lg text-gray-600 mt-4 px-4">
                             Follow the link below to know your size.
@@ -100,7 +100,7 @@ export default function Faq() {
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-7" className="m-2">
-                    <AccordionTrigger className="text-md sm:text-xl px-4 h-12 font-normal bg-stone-300 rounded-xl">Can I customize my order?</AccordionTrigger>
+                    <AccordionTrigger className="text-md sm:text-xl px-4 h-12 font-normal bg-secondary rounded-xl">Can I customize my order?</AccordionTrigger>
                     <AccordionContent className="text-xl">
                         <p className="text-lg text-gray-600 mt-4 px-4">
                             Yes, Some of our collections offer customization options including minor design

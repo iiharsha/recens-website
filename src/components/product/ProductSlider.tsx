@@ -28,7 +28,7 @@ const ProductSlider = ({ product }: { product: Product }) => {
   return (
     <div className="sticky top-1">
       <div className="flex flex-col items-center justify-center gap-[24px] pb-[24px] md:hidden">
-        <h2 className="font-lora text-[clamp(28px,18px_+_2vw,40px)] font-bold leading-[1] text-darkPurple">
+        <h2 className="text-[clamp(28px,18px_+_2vw,40px)] font-bold leading-[1] text-darkPurple">
           {product.title}
         </h2>
       </div>
@@ -54,7 +54,7 @@ const ProductSlider = ({ product }: { product: Product }) => {
             setIsEnd(s.isEnd);
             setIsStart(s.isBeginning);
           }}
-          className="w-full max-w-[80%] rounded-[16px]"
+          className="w-full max-w-[80%]"
         >
           {product.images.map((image, i) => (
             <SwiperSlide
@@ -76,7 +76,7 @@ const ProductSlider = ({ product }: { product: Product }) => {
           className={clsx(
             "absolute right-[1%] top-1/2 font-[swiper-icons] text-[40px] transition-all duration-300 will-change-transform -translate-y-1/2",
             {
-              "text-purple hover:text-darkPurple hover:drop-shadow-lg hover:scale-110":
+              "text-tertiary hover:text-dark hover:drop-shadow-lg hover:scale-110":
                 !isEnd,
               "text-purple/30": isEnd,
             }
@@ -111,7 +111,7 @@ const ProductSlider = ({ product }: { product: Product }) => {
       >
         {product.images.map((image, i) => (
           <SwiperSlide
-            className="relative aspect-[7/10] !w-[100px] cursor-pointer overflow-hidden rounded-[8px] border-2"
+            className="relative aspect-[7/10] !w-[100px] cursor-pointer overflow-hidden border-2"
             key={i}
           >
             <Image

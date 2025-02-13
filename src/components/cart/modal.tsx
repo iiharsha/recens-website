@@ -13,6 +13,7 @@ import { DeleteItemButton } from './delete-item-button';
 import { EditItemQuantityButton } from './edit-item-quantity-button';
 import OpenCart from './open-cart';
 import { ArrowRight } from 'lucide-react';
+import { tenorsans } from '@/fonts/fonts';
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -155,17 +156,17 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                       );
                     })}
                   </ul>
-                  <div className="py-4 text-sm font-semibold">
+                  <div className={`py-4 text-sm font-semibold`}>
                     <div className="mb-3 flex items-center justify-between border-b border-purple pb-1">
-                      <p>Taxes</p>
-                      <p className="text-right">Items price inclusive of Tax</p>
+                      <p className='font-bold'>Taxes</p>
+                      <p className="text-right">Price is inclusive of all taxes.</p>
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-purple pb-1 pt-1">
-                      <p>Shipping</p>
+                      <p className='font-bold'>Shipping</p>
                       <p className="text-right">FREE for PAN India</p>
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-purple pb-1 pt-1">
-                      <p>Total</p>
+                      <p className='font-bold'>Total</p>
                       <Price
                         className="text-right text-base"
                         amount={cart.cost.totalAmount.amount}
@@ -173,8 +174,8 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                       />
                     </div>
                   </div>
-                  <a href={cart.checkoutUrl} className={`bg-black px-[32px] text-white rounded-lg font-semibold
-                    py-[16px] text-center flex justify-center gap-2 hover:text-xl transition-all duration-300 ease-in-out`}>
+                  <a href={cart.checkoutUrl} className={`bg-dark px-[32px] text-primary font-semibold
+                    py-[16px] text-center flex justify-center gap-2 hover:text-[16px] transition-all duration-200 ease-in-out`}>
                     Proceed to Checkout
                     <ArrowRight />
                   </a>

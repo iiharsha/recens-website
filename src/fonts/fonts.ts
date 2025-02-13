@@ -1,7 +1,14 @@
-import { Tenor_Sans } from "next/font/google";
+import { BookmarkMinus } from "lucide-react";
+import { Tenor_Sans, Montserrat } from "next/font/google";
 
 export const tenorsans = Tenor_Sans({
   weight: "400",
   subsets: ["latin"],
-  variable: "--tenor",
+  variable: "--font-tenor",
+});
+
+export const montserrat = Montserrat({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-montserrat",
 });

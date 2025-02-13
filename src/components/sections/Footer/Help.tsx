@@ -9,14 +9,14 @@ const Help = async () => {
         <div key={i}>
           <Link
             href={menuItem.path}
-            className="mb-3 text-lg font-semibold text-gray-500 hover:text-gray-900 transition-colors block hover:underline"
+            className="mb-3 text-[16px] font-semibold text-secondary hover:text-tertiary transition-colors block hover:underline"
           >
             {menuItem.title}
           </Link>
           <ul className="space-y-2">
             {menuItem.items.map((subMenuItem, j) => (
               <li key={j}>
-                <Link href={subMenuItem.path} className="text-gray-600 hover:text-gray-900 transition-colors">
+                <Link href={subMenuItem.path} className="text-primary hover:text-gray-900 transition-colors">
                   {subMenuItem.title}
                 </Link>
               </li>

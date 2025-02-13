@@ -30,7 +30,11 @@ export default function Search() {
                 key={searchParams?.get('q')}
                 type="text"
                 name="search"
+<<<<<<< HEAD
                 placeholder="Search for dresses"
+=======
+                placeholder="Search our store..."
+>>>>>>> testbranch1
                 autoComplete="off"
                 defaultValue={searchParams?.get('q') || ''}
                 className="w-full border border-purple bg-white/70 px-4 py-2 text-sm placeholder:text-black"

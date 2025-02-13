@@ -36,7 +36,7 @@ const ProductCard = ({
         >
           <div className="relative aspect-[7/10] h-[257px] overflow-hidden sm:h-[420px]">
             {rank !== undefined && (
-              <div className="absolute left-0 top-0 z-10 flex aspect-square w-[20%] max-w-[56px] items-center justify-center rounded-br-[16px] bg-white/50 text-[clamp(16px,4px_+_2vw,24px)] font-bold text-veryDarkPurple/70 backdrop-blur-sm">
+              <div className="absolute left-0 top-0 z-10 flex aspect-square w-[20%] max-w-[56px] items-center justify-center bg-white/50 text-[clamp(16px,4px_+_2vw,24px)] font-bold text-veryDarkPurple/70 backdrop-blur-sm">
                 {getNumberWithOrdinal(rank)}
               </div>
             )}
@@ -67,7 +67,11 @@ const ProductCard = ({
             {product.title}
           </h3>
         </a>
+<<<<<<< HEAD
         <p className="text-[clamp(14px,6px_+_2vw,14px)] text-gray-600">
+=======
+        <p className="text-[clamp(14px,6px_+_2vw,14px)] text-black/80">
+>>>>>>> testbranch1
           {`RS. ${Intl.NumberFormat("en-IN", {
             useGrouping: true,
           }).format(Number(product.priceRange.minVariantPrice.amount))}`}

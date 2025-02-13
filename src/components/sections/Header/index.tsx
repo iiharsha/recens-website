@@ -10,10 +10,17 @@ import Menu from './Menu';
 import SearchIcon from './SearchIcon';
 import Logo from '@/components/layout/LogoHeader';
 
+<<<<<<< HEAD
 const headerClass = `fixed top-0 left-0 w-full z-50 flex items-center justify-center
 transition-all duration-300 ease-in-out hover:bg-white hover:backdrop-blur-none
 bg-white/50 md:bg-transparent md:hover:bg-white md:hover:backdrop-blur-none
 px-[4px] py-[4px] md:h-[80px] md:py-0 xl:px-[48px]`
+=======
+const headerClass = `fixed top-0 left-0 w-full flex items-center justify-center
+z-50 transition-all duration-300 ease-in-out hover:bg-white hover:backdrop-blur-none
+bg-transparent md:bg-transparent md:hover:bg-white md:hover:backdrop-blur-none
+min-h-[64px] px-[4px] py-[12px] md:min-h-[80px] md:py-[16px] xl:px-[48px]`
+>>>>>>> testbranch1
 
 const Header = async () => {
     const menu = await getMenu('nextjs-menu');
