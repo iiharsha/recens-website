@@ -4,10 +4,20 @@ import Image from 'next/image';
 // clsx
 import clsx from 'clsx';
 
-const Logo = ({ size, className }: { size: 'sm' | 'lg'; className?: string }) => {
+const Logo = ({
+    size,
+    className,
+    variant = 'default'
+}: {
+    size: 'sm' | 'lg';
+    className?: string;
+    variant?: 'default' | 'white';
+}) => {
+    const logosource =
+        variant === 'white' ? '/images/logo-white.webp' : '/images/logo-header.webp';
     return (
         <Image
-            src="/images/logo-header.webp"
+            src={logosource}
             width="594"
             height="206"
             sizes={size === 'sm' ? '150px' : '288px'}

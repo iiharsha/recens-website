@@ -2,16 +2,16 @@
     {
       "title": "X",
       "url": "https://twitter.com/Recens_",
-      "image": "/images/footer/social-media/x.webp"
+      "image": "/images/footer/social-media/x.svg"
     },
     {
       "title": "Instagram",
       "url": "https://www.instagram.com/recens.co.in",
-      "image": "/images/footer/social-media/instagram.webp"
+      "image": "/images/footer/social-media/instagram.svg"
     },
     {
       "title": "Youtube",
       "url": "https://www.youtube.com/@recens-rc",
-      "image": "/images/footer/social-media/youtube.webp"
+      "image": "/images/footer/social-media/youtube.svg"
     }
   ]

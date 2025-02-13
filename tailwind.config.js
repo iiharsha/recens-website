@@ -15,11 +15,10 @@ module.exports = {
         xs: "480px",
       },
       colors: {
-        veryDarkPurple: "#0a0a0a",
-        darkPurple: "#1a1a1a",
-        purple: "#2e2e2e",
-        lightPurple: "#3d3d3d",
-        veryLightPurple: "#4a4a4a",
+        primary: "#ffffff",
+        secondary: "#d4d4d4",
+        tertiary: "#b3b3b3",
+        dark: "#2b2b2b",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -64,6 +63,7 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
         tenor: "var(--font-tenor)",
+        mont: "var(--font-montserrat)",
       },
       keyframes: {
         fadeIn: {

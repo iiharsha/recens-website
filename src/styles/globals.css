@@ -15,83 +15,86 @@ button {
 }
 
 .btn {
-  @apply relative border border-transparent bg-lightPurple px-[32px] py-[16px] font-bold text-white shadow-md transition-all duration-300 after:absolute after:top-[calc(50%_+_2px)] after:text-[20px] after:text-white after:opacity-0 after:transition-all after:duration-300 after:-translate-y-1/2 hover:border-lightPurple hover:bg-purple hover:pl-[6px] hover:pr-[18px] hover:text-white hover:after:opacity-100;
+  @apply relative border border-transparent bg-primary px-[32px] py-[16px] font-bold text-dark shadow-md transition-all duration-300 after:absolute after:top-[calc(50%_+_2px)] after:text-[20px] after:text-white after:opacity-0 after:transition-all after:duration-300 after:-translate-y-1/2 hover:border-primary hover:bg-secondary hover:pl-[6px] hover:pr-[18px] hover:text-dark hover:after:opacity-100;
 }
 
 .btn-very-dark {
-  @apply relative border border-transparent bg-black px-[32px] py-[16px] font-bold text-white shadow-md transition-all duration-300 after:absolute after:right-[20px] after:top-1/2 after:font-[swiper-icons] after:text-[18px] after:text-white after:opacity-0 after:transition-all after:duration-300 after:content-['→'] after:-translate-y-1/2 hover:border-white hover:bg-purple hover:pl-[16px] hover:pr-[48px] hover:after:opacity-100;
+  @apply relative border border-transparent bg-dark px-[32px] py-[16px] font-bold text-white shadow-md transition-all duration-300 after:absolute after:right-[20px] after:top-1/2 after:font-[swiper-icons] after:text-[18px] after:text-dark after:opacity-0 after:transition-all after:duration-300 after:content-['→'] after:-translate-y-1/2 hover:border-white hover:bg-primary hover:pl-[16px] hover:pr-[48px] hover:after:opacity-100 hover:text-dark;
 }
 
-
 .btn-cart {
-  @apply relative w-full border border-transparent bg-purple px-[32px] py-[16px] font-bold text-white shadow-md transition-all duration-300 after:absolute after:right-[20px] after:top-1/2 after:text-[32px] after:text-white after:opacity-0 after:transition-all after:duration-300 after:content-['+'] after:-translate-y-1/2 hover:border-white hover:bg-darkPurple hover:pl-[16px] hover:pr-[48px] hover:text-white hover:after:opacity-100;
+  @apply relative w-full border border-transparent bg-dark px-[32px] py-[16px] font-bold text-primary shadow-md transition-all duration-300 after:absolute after:right-[20px] after:top-1/2 after:text-[32px] after:text-primary after:opacity-0 after:transition-all after:duration-300 after:content-['+'] after:-translate-y-1/2 hover:border-primary hover:bg-dark hover:pl-[16px] hover:pr-[48px] hover:text-white hover:after:opacity-100;
 }
 
 .btn-cart-disabled {
-  @apply relative w-full border border-transparent bg-purple px-[32px] py-[16px] font-bold text-white shadow-md;
+  @apply relative w-full border border-transparent bg-dark px-[32px] py-[16px] font-bold text-primary shadow-md;
 }
 
+
+
+
 .hover-line {
-  @apply relative transition-all duration-300 before:absolute before:bottom-0 before:left-1/2 before:h-[1px] before:w-0 before:bg-purple before:opacity-0 before:transition-all before:duration-300 before:will-change-transform before:-translate-x-1/2 hover:text-purple hover:before:w-full hover:before:opacity-100;
+  @apply relative transition-all duration-300 before:absolute before:bottom-0 before:left-1/2 before:h-[1px] before:w-0 before:bg-dark before:opacity-0 before:transition-all before:duration-300 before:will-change-transform before:-translate-x-1/2 hover:text-dark hover:before:w-full hover:before:opacity-100;
 }
 
 .header-link {
-  @apply relative h-full before:absolute before:bottom-0 before:left-1/2 before:hidden before:h-[4px] before:w-0 before:bg-purple before:opacity-0 before:transition-all before:duration-300 before:will-change-transform before:-translate-x-1/2 hover:text-purple hover:before:w-full hover:before:opacity-100 md:before:block;
+  @apply relative h-full before:absolute before:bottom-0 before:left-1/2 before:hidden before:h-[4px] before:w-0 before:bg-dark before:opacity-0 before:transition-all before:duration-300 before:will-change-transform before:-translate-x-1/2 hover:text-dark hover:before:w-full hover:before:opacity-100 md:before:block;
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: 0 0% 100%; /* #ffffff */
+    --foreground: 0 0% 17%; /* A darker shade for contrast */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 0 0% 17%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --popover-foreground: 0 0% 17%;
+    --primary: 0 0% 100%; /* White */
+    --primary-foreground: 0 0% 17%;
+    --secondary: 0 0% 83%; /* Light Gray #d4d4d4 */
+    --secondary-foreground: 0 0% 17%;
+    --muted: 0 0% 70%; /* Medium Gray #b3b3b3 */
+    --muted-foreground: 0 0% 30%;
+    --accent: 0 0% 70%; /* Matches muted */
+    --accent-foreground: 0 0% 17%;
+    --destructive: 0 84.2% 60.2%; /* Keeping red for danger */
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 83%; /* Matches secondary */
+    --input: 0 0% 83%;
+    --ring: 0 0% 17%;
+    --chart-1: 220 20% 90%; /* Light cool tone */
+    --chart-2: 160 10% 65%; /* Muted gray-green */
+    --chart-3: 197 10% 50%; /* Grayish Blue */
+    --chart-4: 43 10% 40%; /* Muted Yellow */
+    --chart-5: 27 10% 35%; /* Warm Beige */
     --radius: 0.5rem;
   }
+
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 0 0% 17%; /* Dark Gray #2b2b2b */
+    --foreground: 0 0% 90%; /* Lighter for contrast */
+    --card: 0 0% 17%;
+    --card-foreground: 0 0% 90%;
+    --popover: 0 0% 17%;
+    --popover-foreground: 0 0% 90%;
+    --primary: 0 0% 90%; /* Slightly off-white */
+    --primary-foreground: 0 0% 17%;
+    --secondary: 0 0% 30%; /* Darker Gray */
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 40%; /* Darker muted */
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 0% 40%;
+    --accent-foreground: 0 0% 90%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 30%;
+    --input: 0 0% 30%;
+    --ring: 0 0% 90%;
+    --chart-1: 220 30% 50%;
+    --chart-2: 160 25% 45%;
+    --chart-3: 30 40% 55%;
+    --chart-4: 280 30% 60%;
+    --chart-5: 340 35% 55%;
   }
 }
 

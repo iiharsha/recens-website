@@ -1,6 +1,6 @@
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { GoogleTagManager } from "@next/third-parties/google"
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 import { ReactNode, Suspense } from "react";
@@ -17,9 +17,9 @@ const Footer = dynamic(() => import("@/components/sections/Footer"), {
   loading,
 });
 
-
 // styles
 import "@/styles/globals.css";
+import { montserrat } from "@/fonts/fonts";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,21 +55,22 @@ export const metadata = {
     },
   }),
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-icon.png',
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
     other: {
-      rel: '/',
-      url: '/android-chrome-192x192.png',
-      sizes: '192x192',
-      type: 'image/png',
+      rel: "/",
+      url: "/android-chrome-192x192.png",
+      sizes: "192x192",
+      type: "image/png",
     },
   },
 };
 
+
 export const viewport: Viewport = {
   themeColor: "#ffffff",
-}
+};
 
 export default async function RootLayout({
   children,
@@ -81,12 +82,16 @@ export default async function RootLayout({
       <GoogleTagManager gtmId="GTM-PWQRW7QQ" />
       <GoogleAnalytics gaId="G-8XGNZRV5GF" />
       <Head>
-        <link rel='canonical' href="https://recens.co.in" key='canonical'></link>
+        <link
+          rel="canonical"
+          href="https://recens.co.in"
+          key="canonical"
+        ></link>
       </Head>
-      <body className={`${inter.className} bg-neutral-100`}>
+      <body className={`${montserrat.className} bg-[#FFFFFF]`}>
         <Suspense fallback={<Loading />}>
           <Header />
-          <main>
+          <main className="pt-[36px] sm:pt-[50px] md:pt-[60px]">
             {children}
             <SpeedInsights />
           </main>

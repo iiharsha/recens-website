@@ -84,11 +84,11 @@ export function VariantSelector({
               title={`${option.name} ${value}${!isAvailableForSale ? " (Out of Stock)" : ""
                 }`}
               className={clsx(
-                "border-[1px] border-black px-[20px] py-[10px] text-[14px] font-medium transition-all duration-300 will-change-transform uppercase", {
-                "cursor-default bg-darkPurple text-white": isActive,
-                "hover:bg-purple hover:text-white ":
+                "border-[1px] border-dark px-[20px] py-[10px] text-[14px] font-medium transition-all duration-300 will-change-transform uppercase", {
+                "cursor-default bg-dark text-white": isActive,
+                "hover:bg-dark hover:text-primary":
                   !isActive && isAvailableForSale,
-                "relative z-10 cursor-not-allowed overflow-hidden bg-neutral-100 text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 before:dark:bg-neutral-700":
+                "relative z-10 cursor-not-allowed overflow-hidden bg-primary text-dark ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 before:dark:bg-neutral-700":
                   !isAvailableForSale,
               }
               )}
