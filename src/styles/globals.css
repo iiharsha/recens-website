@@ -28,7 +28,7 @@ button {
 }
 
 .btn-cart-disabled {
-  @apply relative w-full border border-transparent bg-purple px-[32px] py-[16px] font-bold text-white shadow-md;
+  @apply relative w-full border border-transparent bg-purple px-[32px] py-[16px] font-bold text-white shadow-md;V
 =======
   @apply relative w-full border border-transparent bg-dark px-[32px] py-[16px] font-bold text-primary shadow-md transition-all duration-300 after:absolute after:right-[20px] after:top-1/2 after:text-[32px] after:text-primary after:opacity-0 after:transition-all after:duration-300 after:content-['+'] after:-translate-y-1/2 hover:border-primary hover:bg-dark hover:pl-[16px] hover:pr-[48px] hover:text-white hover:after:opacity-100;
 }
