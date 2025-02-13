@@ -1,5 +1,11 @@
 'use client';
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 // react
 import { useMemo } from 'react';
 
@@ -12,6 +18,9 @@ import { useSearchParams } from 'next/navigation';
 import { VariantSelector } from './VariantSelector';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import SizeGuide from '../common/SizeGuide';
+import { tenorsans } from "@/fonts/fonts";
+
 export type Combination = {
   id: string;
   availableForSale: boolean;
@@ -52,25 +61,38 @@ const ProductDescription = ({ product }: { product: Product }) => {
   })?.price;
 
   const price = currentCombinationPrice || product.priceRange.minVariantPrice.amount;
+
   return (
-    <div className="sticky top-1 flex flex-col items-start justify-start gap-4 px-6 font-lora text-darkPurple">
-      <h2 className="hidden text-[clamp(28px,18px_+_2vw,40px)] font-bold leading-[1] md:block">
+    <div className="sticky top-1 flex flex-col items-start justify-start gap-4 px-6 text-darkPurple">
+      <h2 className={`${tenorsans.variable} hidden text-[clamp(28px,18px_+_2vw,40px)] font-tenor leading-[1] md:block`}>
         {product.title}
       </h2>
-      <p className="text-[32px]">
-        {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(Number(price))}
+      <p className="text-[18px] flex flex-col">
+        {`RS. ${Intl.NumberFormat("en-IN", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+          useGrouping: true,
+        }).format(Number(price))}`}
+        <span className="text-[10px] text-gray-600">Tax Included</span>
       </p>
+
       <div className="h-[1px] w-full bg-purple"></div>
+      <SizeGuide />
       <VariantSelector options={product.options} combinations={combinations} />
-      <Link href="/sizeguide" className="flex items-center gap-1 underline">
-        Size Chart <ArrowRight className="w-4 h-4" />
-      </Link>
       <div>
-        <p className="mb-2 text-xl font-semibold">Description</p>
-        <div
-          dangerouslySetInnerHTML={{ __html: product.descriptionHtml as string }}
-          className="text-[18px] text-darkPurple"
-        />
+        <Accordion type="single" collapsible>
+          <AccordionItem value="1" className="border-none m-2">
+            <AccordionTrigger className="text-[18px] font-normal">
+              DETAILS
+            </AccordionTrigger>
+            <AccordionContent className="text-[6px]">
+              <div
+                dangerouslySetInnerHTML={{ __html: product.descriptionHtml as string }}
+                className="text-[14px]"
+              />
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
       <div className="my-2 h-[1px] w-full bg-purple"></div>
       <div className="w-full">
@@ -81,3 +103,4 @@ const ProductDescription = ({ product }: { product: Product }) => {
 };
 
 export default ProductDescription;
+

@@ -45,8 +45,7 @@ export default function PrivacyPolicy() {
         <div className="border-b mb-6"></div>
 
         <h2 className={`${tenorsans.variable} font-tenor text-xl font-semibold mb-4`}>PAYMENT</h2>
-        <p>We use Razorpay for processing payments. Card data is encrypted via PCI-DSS standards and not stored by us.</p>
-        <p>For more details, visit <a href="https://razorpay.com" className="text-blue-500">Razorpay</a>.</p>
+        <p>We use various payment providers for processing payments. Card data is encrypted and not stored by us.</p>
 
         <div className="border-b mb-6"></div>
 

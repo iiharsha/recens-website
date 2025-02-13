@@ -135,7 +135,7 @@ export function AddToCart({
         isPending={isPending}
       />
       {state && (
-        <p aria-live="polite" className="text-red-500 mt-2">
+        <p aria-live="polite" className="mt-2">
           {state}
         </p>
       )}
