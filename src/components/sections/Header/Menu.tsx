@@ -9,6 +9,18 @@ const Menu = ({ menu }: { menu: MenuType[] }) => {
     return (
         <>
             {menu.length ? (
+<<<<<<< HEAD
+                <ul className="hidden h-full gap-[16px] text-base md:flex md:items-center lg:gap-[24px] lg:text-[18px] xl:gap-[48px]">
+                    {menu.map((item: MenuType) => (
+                        <li
+                            key={item.title}
+                            className="h-full"
+                            onMouseLeave={(e) => {
+                                if (
+                                    !item.items.length ||
+                                    (e.relatedTarget as HTMLElement).parentElement === e.currentTarget
+                                )
+=======
                 <ul className="hidden h-full gap-[16px] text-base md:flex md:items-center lg:gap-[24px] lg:text-[18px] xl:gap-[48px]">   {menu.map((item: MenuType) => (
                     <li
                         key={item.title}
@@ -35,6 +47,7 @@ const Menu = ({ menu }: { menu: MenuType[] }) => {
                                 const containerElement = (e.target as HTMLAnchorElement)
                                     .nextSibling as HTMLDivElement;
                                 if (!containerElement || !containerElement.classList.contains('opacity-0'))
+>>>>>>> testbranch1
                                     return;
                                 containerElement.classList.remove(
                                     'opacity-0',

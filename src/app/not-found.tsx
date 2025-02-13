@@ -1,14 +1,28 @@
 'use client'
+<<<<<<< HEAD
+
 import { useRouter } from "next/navigation";
 import { Tenor_Sans } from "next/font/google";
+
+=======
+import { useRouter } from "next/navigation";
+import { Tenor_Sans } from "next/font/google";
+>>>>>>> testbranch1
 // Load the Tenor Sans font
 const tenorSans = Tenor_Sans({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
+<<<<<<< HEAD
+
 export default function GlobalError() {
   const router = useRouter();
+
+=======
+export default function GlobalError() {
+  const router = useRouter();
+>>>>>>> testbranch1
   return (
     <html lang="en">
       <body className={`flex items-center justify-center min-h-screen bg-white text-gray-900 ${tenorSans.className}`}>
@@ -36,3 +50,8 @@ export default function GlobalError() {
     </html>
   );
 }
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> testbranch1

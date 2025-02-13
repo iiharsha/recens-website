@@ -17,7 +17,6 @@ px-[8px] py-[4px] md:h-[80px] md:py-0 xl:px-[48px]`
 
 const Header = async () => {
     const menu = await getMenu('nextjs-menu');
-
     return (
         <header className={headerClass}>
             <h1 className="sr-only">Recens</h1>
