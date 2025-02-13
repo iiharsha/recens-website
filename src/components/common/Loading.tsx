@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 'use client'
 
 import React from 'react';
 
-=======
-import React from 'react';
-
->>>>>>> testbranch1
 const Loading = () => {
   return (
     <div className='flex items-center justify-center min-h-screen bg-white'>
