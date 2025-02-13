@@ -91,7 +91,7 @@ export default async function RootLayout({
       <body className={`${montserrat.className} bg-[#FFFFFF]`}>
         <Suspense fallback={<Loading />}>
           <Header />
-          <main className="pt-[36px] sm:pt-[50px] md:pt-[60px]">
+          <main>
             {children}
             <SpeedInsights />
           </main>
