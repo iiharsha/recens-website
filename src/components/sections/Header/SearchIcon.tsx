@@ -1,7 +1,7 @@
 'use client';
 
 // react
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 // next
 import Image from 'next/image';
@@ -10,20 +10,35 @@ import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion';
 
 // components
 import Search from './search';
+import { X } from 'lucide-react';
 
 const SearchIcon = () => {
     const [isSearchVisible, setIsSearchVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
+
+    // Function to close the search modal
+    const handleClose = useCallback(() => {
+        setIsSearchVisible(false);
+    }, []);
+
     useEffect(() => {
-        isSearchVisible && ref.current && ref.current.querySelector<HTMLInputElement>('input')?.focus();
+        if (isSearchVisible) {
+            ref.current?.querySelector<HTMLInputElement>('input')?.focus();
+        }
     }, [isSearchVisible]);
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'Escape' || e.key === 'Enter') setIsSearchVisible(false);
+            if (e.key === 'Escape' || e.key === 'Enter') {
+                handleClose();
+            }
         };
         document.addEventListener('keydown', handleKeyDown);
-        return () => document.removeEventListener('keydown', handleKeyDown);
-    });
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [handleClose]);
+
     return (
         <>
             <button
@@ -37,7 +52,7 @@ const SearchIcon = () => {
                 {isSearchVisible && (
                     <div
                         className="absolute inset-0 z-40 hidden md:block"
-                        onClick={() => setIsSearchVisible(false)}
+                        onClick={handleClose}
                     >
                         <LazyMotion features={domAnimation}>
                             <m.div
@@ -50,6 +65,7 @@ const SearchIcon = () => {
                                 ref={ref}
                             >
                                 <Search />
+                                <X onClick={handleClose} className='m-2' />
                             </m.div>
                         </LazyMotion>
                     </div>
@@ -60,3 +76,4 @@ const SearchIcon = () => {
 };
 
 export default SearchIcon;
+

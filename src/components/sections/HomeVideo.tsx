@@ -1,21 +1,16 @@
 // components
 import Logo from '@/components/layout/Logo';
 
+const image1010 = "https://ik.imagekit.io/nc0cicxqm/IMG_1010-final_converted.webp?updatedAt=1739556492507";
+
 const HomeVideo = () => {
   return (
-    <div className="pointer-events-none relative h-[470px] select-none md:h-[calc(100vh_-_80px)]">
-      <video
-        playsInline
-        muted
-        loop
-        autoPlay
-        preload="auto"
-        className="absolute h-full w-full object-cover"
-      >
-        <source src="/videos/clothing-shoot.mp4" type="video/mp4" />
-        <source src="/videos/clothing-shoot.webm" type="video/webm" />
-      </video>
-      <Logo size="lg" className="absolute bottom-4 right-4 md:bottom-8 md:right-8" />
+    <div className="pointer-events-none relative h-[170px] sm:h-[320px] -top-[60px] sm:-top-[80px] -bottom-[40px] select-none md:h-[calc(100vh_-_80px)]">
+      <img
+        src={image1010}
+        alt="Clothing Shoot"
+        className="absolute h-[30vh] sm:h-[50vh] md:h-[100vh] w-full object-cover"
+      />
     </div>
   );
 };

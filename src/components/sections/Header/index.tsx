@@ -11,9 +11,9 @@ import SearchIcon from './SearchIcon';
 import Logo from '@/components/layout/LogoHeader';
 
 
-const headerClass = `flex items-center justify-center sticky top-0 z-50 transition-all
-duration-300 ease-in-out backdrop-blur-md hover:bg-white/80 hover:backdrop-blur-none
-bg-white/50 md:bg-transparent md:hover:bg-white/50 md:hover:backdrop-blur-none
+const headerClass = `text-tertiary hover:text-dark flex items-center justify-center sticky top-0 z-50 transition-all
+duration-300 ease-in-out bg-white/70 hover:backdrop-blur-none
+sm:bg-transparent md:hover:bg-white/70 md:hover:backdrop-blur-none
 px-[8px] py-[4px] md:h-[80px] md:py-0 xl:px-[48px]`
 
 
@@ -25,7 +25,7 @@ const Header = async () => {
             <nav className="flex h-full w-full max-w-full items-center justify-between md:w-[1440px]">
                 <h2 className="sr-only">Main Navigation Menu</h2>
                 <div className="flex h-full w-full items-center justify-between">
-                    <div className="md:hidden">
+                    <div className="md:hidden text-dark">
                         <MobileMenu menu={menu} />
                     </div>
                     <Link
