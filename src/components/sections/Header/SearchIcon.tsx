@@ -12,7 +12,13 @@ import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion';
 import Search from './search';
 import { X } from 'lucide-react';
 
-const SearchIcon = () => {
+const SearchIcon = ({
+    className,
+    variant = 'default'
+}: {
+    className?: string;
+    variant?: 'default' | 'white';
+}) => {
     const [isSearchVisible, setIsSearchVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -46,8 +52,12 @@ const SearchIcon = () => {
                 onClick={() => setIsSearchVisible(!isSearchVisible)}
                 className="header-link hidden md:block [&>*]:transition-all [&>*]:duration-300 hover:[&>*]:opacity-50"
             >
-                <Image src="/images/magnifier.png" width="36" height="36" alt="search" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="size-8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+
             </button>
+
             <AnimatePresence>
                 {isSearchVisible && (
                     <div
@@ -65,7 +75,7 @@ const SearchIcon = () => {
                                 ref={ref}
                             >
                                 <Search />
-                                <X onClick={handleClose} className='m-2' />
+                                <X onClick={handleClose} className="m-2" />
                             </m.div>
                         </LazyMotion>
                     </div>

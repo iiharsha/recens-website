@@ -33,11 +33,12 @@ export default function Search() {
                 placeholder="Search our store..."
                 autoComplete="off"
                 defaultValue={searchParams?.get('q') || ''}
-                className="w-full border border-purple bg-white/70 px-4 py-2 text-sm placeholder:text-black"
+                className="w-full border border-purple bg-white/70 px-4 py-2 text-sm placeholder:text-dark text-dark"
             />
             <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
-                <MagnifyingGlassIcon className="h-4" />
+                <MagnifyingGlassIcon className="h-4 text-dark" />
             </div>
         </form>
     );
 }
+
