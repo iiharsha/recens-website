@@ -44,17 +44,17 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-secondary">
           <div className="flex md:space-x-4 gap-2 justify-center">
             <Link
-              href="/termsandconditions"
+              href="/termsofservice"
               className="underline text-tertiary hover:text-secondary transition-colors mb-2 md:mb-0"
             >
-              {`Terms & Conditions`}
+              {`Terms`}
             </Link>
             <div className="mx-4 mt-3 w-1 h-1 bg-tertiary rounded-full"></div>
             <Link
               href="/privacypolicy"
               className="underline text-tertiary hover:text-secondary transition-colors mb-2 md:mb-0"
             >
-              {`Privacy Policy`}
+              {`Privacy`}
             </Link>
           </div>
         </div>

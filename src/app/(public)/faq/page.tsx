@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title: "FAQs",
         description: "Frequently Asked Questions",
-        keywords: ["help", "faq", "payment", "shipping", "cancel"],
+        keywords: ["help", "faq", "payment", "shipping", "cancel dress", "cancel order", "return order", "return dress", "exchage dress"],
     };
 }
 

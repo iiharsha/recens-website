@@ -17,6 +17,7 @@ import "swiper/css/thumbs";
 
 // types
 import { Product } from "@/lib/shopify/types";
+import { tenorsans } from "@/fonts/fonts";
 
 const ProductSlider = ({ product }: { product: Product }) => {
   // swiper
@@ -28,7 +29,7 @@ const ProductSlider = ({ product }: { product: Product }) => {
   return (
     <div className="sticky top-1">
       <div className="flex flex-col items-center justify-center gap-[24px] pb-[24px] md:hidden">
-        <h2 className="text-[clamp(28px,18px_+_2vw,40px)] font-bold leading-[1] text-darkPurple">
+        <h2 className={`${tenorsans.variable} text-[clamp(28px,18px_+_2vw,40px)] font-tenor font-semibold leading-[1] text-darkPurple`}>
           {product.title}
         </h2>
       </div>

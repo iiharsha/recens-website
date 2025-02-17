@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Loading from "@/components/common/Loading";
-import HomeVideo from "@/components/sections/HomeVideo";
+import HomeHero from "@/components/sections/HomeHero";
 import NewArrivals from "@/components/sections/NewArrivals/NewArrivals";
 
 
@@ -39,12 +39,16 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <>
-      <HomeVideo />
-      <Discounts />
+    <main>
+      <div className="relative">
+        <HomeHero />
+        <div className="mt-2 xs:mt-6 md:mt-0 z-10">
+          <Discounts />
+        </div>
+      </div>
       <NewArrivals />
       <AboutUs />
-    </>
+    </main>
   )
 }
 
