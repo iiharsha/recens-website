@@ -11,8 +11,17 @@ import { tenorsans } from "@/fonts/fonts";
 export async function generateMetadata(): Promise<Metadata> {
     return {
         title: "FAQs",
-        description: "Frequently Asked Questions",
-        keywords: ["help", "faq", "payment", "shipping", "cancel dress", "cancel order", "return order", "return dress", "exchage dress"],
+        description: "Find answers to frequently asked questions about payments, shipping, cancellations, returns, exchanges, and custom orders at Recens.",
+        keywords: [
+            "Recens FAQ", "help", "payment methods", "online payment", "UPI payment", "credit card payment",
+            "shipping details", "delivery time", "order tracking", "shipping charges", "free shipping",
+            "order cancellation", "cancel order", "refund policy", "return policy", "exchange policy",
+            "dress return", "return process", "how to return", "how to exchange", "replacement policy",
+            "order refund", "order status", "order not received", "delivery delay",
+            "custom dress", "custom order", "tailor-made dresses", "customization options",
+            "size guide", "how to measure size", "find my size", "dress fitting",
+            "fashion store support", "women's fashion help", "buying guide", "shopping assistance"
+        ],
     };
 }
 

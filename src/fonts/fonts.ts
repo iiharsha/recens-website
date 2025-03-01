@@ -1,4 +1,3 @@
-import { BookmarkMinus } from "lucide-react";
 import { Tenor_Sans, Montserrat } from "next/font/google";
 
 export const tenorsans = Tenor_Sans({
