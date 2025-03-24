@@ -62,7 +62,7 @@ export default async function CategoryPage({
                             )
                         }
                     </div>
-                    <Grid className="grid-cols-1 items-start justify-center sm:grid-cols-2 lg:grid-cols-3">
+                    <Grid className="grid-cols-2 items-center justify-center sm:grid-cols-2 lg:grid-cols-3 px-2">
                         <ProductGridItems products={products} />
                     </Grid>
                 </div>

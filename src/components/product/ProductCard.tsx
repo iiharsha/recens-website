@@ -63,7 +63,7 @@ const ProductCard = ({
           </div>
         </a>
         <a href={'/product/' + product.handle}>
-          <h3 className={`${tenorsans.variable} font-tenor text-center text-[clamp(20px,8px_+_2vw,22px)] font-semibold transition-all duration-300 hover:text-purple`}>
+          <h3 className={`${tenorsans.variable} font-tenor text-center text-[clamp(20px,8px_+_2vw,20px)] font-semibold transition-all duration-300 hover:text-purple`}>
             {product.title}
           </h3>
         </a>
