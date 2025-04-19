@@ -5,7 +5,8 @@ import Image from "next/image"
 
 const heroImages = [
   "https://ik.imagekit.io/nc0cicxqm/pink-heroimage-1035.webp?",
-  "https://ik.imagekit.io/nc0cicxqm/IMG_1221-scaled.webp?"
+  "https://ik.imagekit.io/nc0cicxqm/IMG_1221-scaled.webp?",
+  "https://ik.imagekit.io/nc0cicxqm/DSC05769-landscape3.webp?"
   // Add more image URLs here
 ]
 
@@ -15,7 +16,7 @@ export default function HomeVideo() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length)
-    }, 4000) // Change image every 5 seconds
+    }, 3000) // Change image every 3 seconds
     return () => clearInterval(timer)
   }, [])
 
