@@ -4,9 +4,9 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 
 const heroImages = [
-  "https://ik.imagekit.io/nc0cicxqm/DSC05769-landscape3.webp?"
+  "https://ik.imagekit.io/nc0cicxqm/DSC05769-landscape3.webp?",
   "https://ik.imagekit.io/nc0cicxqm/pink-heroimage-1035.webp?",
-  "https://ik.imagekit.io/nc0cicxqm/IMG_1221-scaled.webp?",
+  "https://ik.imagekit.io/nc0cicxqm/IMG_5968_converted.webp?",
   // Add more image URLs here
 ]
 
