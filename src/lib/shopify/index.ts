@@ -305,7 +305,7 @@ export async function getCollectionProducts({
   collection,
   reverse,
   sortKey,
-  first = 100,
+  first = 50,
 }: {
   collection: string;
   reverse?: boolean;
@@ -442,7 +442,7 @@ export async function getProducts({
   query,
   reverse,
   sortKey,
-  first = 100,
+  first = 50,
 }: {
   query?: string;
   reverse?: boolean;

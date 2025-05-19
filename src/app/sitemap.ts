@@ -1,3 +1,7 @@
+// app/sitemap.xml/route.ts or route.tsx
+
+export const dynamic = 'force-dynamic';
+
 import { getCollections, getPages, getProducts } from "@/lib/shopify";
 import { validateEnvironmentVariables } from "@/lib/utils";
 import { MetadataRoute } from "next";
@@ -47,7 +51,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       await Promise.all([collectionsPromise, productsPromise, pagesPromise])
     ).flat();
   } catch (error) {
-    throw JSON.stringify(error, null, 2);
+    console.error("Error fetching sitemap data:", error);
+    // Optionally return a minimal fallback
+    return routesMap;
   }
 
   return [...routesMap, ...fetchedRoutes];
