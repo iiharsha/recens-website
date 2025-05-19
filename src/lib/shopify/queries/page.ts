@@ -29,7 +29,7 @@ export const getPageQuery = /* GraphQL */ `
 
 export const getPagesQuery = /* GraphQL */ `
   query getPages {
-    pages(first: 100) {
+    pages(first: 10) {
       edges {
         node {
           ...page
