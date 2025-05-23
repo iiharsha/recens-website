@@ -1,4 +1,3 @@
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Inter } from "next/font/google";
@@ -26,7 +25,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 // metadata
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
   ? "https://recens.co.in"
   : "http://localhost:3000";
 const twitterCreator = TWITTER_CREATOR
@@ -122,7 +121,6 @@ export default async function RootLayout({
           <Header />
           <main>
             {children}
-            <SpeedInsights />
           </main>
           <Footer />
         </Suspense>

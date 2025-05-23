@@ -1,4 +1,4 @@
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+const baseUrl = process.env.NODE_ENV === "production"
   ? "https://recens.co.in"
   : "http://localhost:3000";
 

@@ -11,7 +11,7 @@ type Route = {
   lastModified: string;
 };
 
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
   ? "https://recens.co.in"
   : "http://localhost:3000";
 
