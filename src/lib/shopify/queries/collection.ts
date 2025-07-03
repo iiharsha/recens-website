@@ -11,7 +11,7 @@ const collectionFragment = /* GraphQL */ `
     }
     updatedAt
     image {
-      src
+      url
       altText
     }
   }

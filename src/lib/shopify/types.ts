@@ -86,7 +86,10 @@ export type ProductVariant = {
   }[];
   price: Money;
   image: {
-    originalSrc: string;
+    url: string;
+    altText: string;
+    width: number;
+    heigth: number;
   };
 };
 

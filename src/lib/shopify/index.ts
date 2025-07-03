@@ -96,7 +96,12 @@ export async function shopifyFetch<T>({
     const body = await result.json();
 
     if (body.errors) {
+      console.error('GraphQL errors:', body.errors)
       throw body.errors[0];
+    }
+
+    if (!body.data) {
+      throw new Error('No data returned from Shopify API');
     }
 
     return {
@@ -104,6 +109,12 @@ export async function shopifyFetch<T>({
       body,
     };
   } catch (e) {
+    console.error('Shopify fetch error: ', {
+      error: e,
+      query: query.substring(0, 100) + '...',
+      variables,
+    });
+
     if (isShopifyError(e)) {
       throw {
         cause: e.cause?.toString() || "unknown",
@@ -112,7 +123,6 @@ export async function shopifyFetch<T>({
         query,
       };
     }
-
     throw {
       error: e,
       query,
@@ -121,14 +131,21 @@ export async function shopifyFetch<T>({
 }
 
 const removeEdgesAndNodes = (array: Connection<any>) => {
-  return array.edges.map((edge) => edge?.node);
+  if (!array?.edges) {
+    return [];
+  }
+
+  return array.edges.map((edge) => edge?.node).filter(Boolean);
 };
 
 const reshapeCart = (cart: ShopifyCart): Cart => {
   if (!cart.cost?.totalTaxAmount) {
+
+    const currencyCode = cart.cost?.totalAmount?.currencyCode || 'INR';
+
     cart.cost.totalTaxAmount = {
       amount: "0.0",
-      currencyCode: "INR",
+      currencyCode,
     };
   }
 
@@ -312,25 +329,36 @@ export async function getCollectionProducts({
   sortKey?: string;
   first?: number;
 }): Promise<Product[]> {
-  const res = await shopifyFetch<ShopifyCollectionProductsOperation>({
-    query: getCollectionProductsQuery,
-    tags: [TAGS.collections, TAGS.products],
-    variables: {
-      handle: collection,
-      reverse,
-      sortKey: sortKey === "CREATED_AT" ? "CREATED" : sortKey,
-      first,
-    },
-  });
+  try {
 
-  if (!res.body.data.collection) {
-    console.log(`No collection found for \`${collection}\``);
+    const res = await shopifyFetch<ShopifyCollectionProductsOperation>({
+      query: getCollectionProductsQuery,
+      tags: [TAGS.collections, TAGS.products],
+      variables: {
+        handle: collection,
+        reverse,
+        sortKey: sortKey === "CREATED_AT" ? "CREATED" : sortKey,
+        first,
+      },
+    });
+
+    if (!res.body.data.collection) {
+      console.log(`No collection found for \`${collection}\``);
+      return [];
+    }
+
+    const products = res.body.data.collection.products;
+    if (!products) {
+      return [];
+    }
+
+    return reshapeProducts(removeEdgesAndNodes(products));
+
+  } catch (error) {
+    console.error('Error fetching prodcuts for collection ${collection}:', error);
     return [];
   }
 
-  return reshapeProducts(
-    removeEdgesAndNodes(res.body.data.collection.products),
-  );
 }
 
 export async function getCollections(): Promise<Collection[]> {
@@ -412,30 +440,48 @@ export async function getPages(): Promise<Page[]> {
 }
 
 export async function getProduct(handle: string): Promise<Product | undefined> {
-  const res = await shopifyFetch<ShopifyProductOperation>({
-    query: getProductQuery,
-    tags: [TAGS.products],
-    variables: {
-      handle,
-    },
-  });
+  try {
+    const res = await shopifyFetch<ShopifyProductOperation>({
+      query: getProductQuery,
+      tags: [TAGS.products],
+      variables: {
+        handle,
+      },
+    });
 
-  return reshapeProduct(res.body.data.product, false);
+    if (!res.body.data.product) {
+      console.log('No product for handle: ${handle}');
+      return undefined;
+    }
+
+    return reshapeProduct(res.body.data.product, false);
+  } catch (error) {
+    console.error('Error fetching product: ${handle}');
+    return undefined;
+  }
 }
 
-export async function getProductRecommendations(
-  productId: string,
-  first = 3,
-): Promise<Product[]> {
-  const res = await shopifyFetch<ShopifyProductRecommendationsOperation>({
-    query: getProductRecommendationsQuery,
-    tags: [TAGS.products],
-    variables: {
-      productId,
-    },
-  });
+export async function getProductRecommendations(productId: string, first = 3): Promise<Product[]> {
+  try {
+    const res = await shopifyFetch<ShopifyProductRecommendationsOperation>({
+      query: getProductRecommendationsQuery,
+      tags: [TAGS.products],
+      variables: {
+        productId,
+      },
+    });
 
-  return reshapeProducts(res.body.data.productRecommendations.slice(0, first));
+    const recommendations = res.body.data?.productRecommendations;
+    if (!recommendations || !Array.isArray(recommendations)) {
+      console.warn('No recommendations found for product: ${productId}');
+      return [];
+    }
+
+    return reshapeProducts(res.body.data.productRecommendations.slice(0, first));
+  } catch (error) {
+    console.error('Error fetching shopify recommendations:', error);
+    return [];
+  }
 }
 
 export async function getProducts({

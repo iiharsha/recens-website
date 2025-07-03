@@ -1,18 +1,7 @@
-import dynamic from "next/dynamic";
-import Loading from "@/components/common/Loading";
 import HomeHero from "@/components/sections/HomeHero";
 import NewArrivals from "@/components/sections/NewArrivals/NewArrivals";
-
-
-const loading = () => <Loading />
-
-const AboutUs = dynamic(() => import('@/components/sections/AboutUs'), {
-  loading
-});
-
-const Discounts = dynamic(() => import('@/components/sections/Discounts'), {
-  loading
-});
+import AboutUs from "@/components/sections/AboutUs";
+import Discounts from "@/components/sections/Discounts";
 
 export const metadata = {
   description: "Recens - Women's Fashion Wear",
