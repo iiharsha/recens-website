@@ -20,7 +20,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://recens.co.in',
-    title: "Recens - Women's Fashion Wear",
+    title: "Recens - Fashion Wear",
     siteName: 'Recens',
     description: 'Recens Fashion Suited To Body'
   },
