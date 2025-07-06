@@ -322,43 +322,56 @@ export async function getCollectionProducts({
   collection,
   reverse,
   sortKey,
-  first = 50,
+  first = 30,
 }: {
   collection: string;
   reverse?: boolean;
   sortKey?: string;
   first?: number;
 }): Promise<Product[]> {
-  try {
+  const maxRetries = 5;
+  let attempt = 0;
 
-    const res = await shopifyFetch<ShopifyCollectionProductsOperation>({
-      query: getCollectionProductsQuery,
-      tags: [TAGS.collections, TAGS.products],
-      variables: {
-        handle: collection,
-        reverse,
-        sortKey: sortKey === "CREATED_AT" ? "CREATED" : sortKey,
-        first,
-      },
-    });
+  while (attempt < maxRetries) {
+    try {
+      const res = await shopifyFetch<ShopifyCollectionProductsOperation>({
+        query: getCollectionProductsQuery,
+        tags: [TAGS.collections, TAGS.products],
+        variables: {
+          handle: collection,
+          reverse,
+          sortKey: sortKey === "CREATED_AT" ? "CREATED" : sortKey,
+          first,
+        },
+      });
 
-    if (!res.body.data.collection) {
-      console.log(`No collection found for \`${collection}\``);
-      return [];
+      if (!res.body.data.collection) {
+        console.log(`No collection found for \`${collection}\``);
+        return [];
+      }
+
+      const products = res.body.data.collection.products;
+      if (!products) {
+        return [];
+      }
+
+      return reshapeProducts(removeEdgesAndNodes(products));
+
+    } catch (error) {
+      attempt++;
+      console.error(`Attempt ${attempt} failed to fetch products for collection "${collection}":`, error);
+
+      if (attempt >= maxRetries) {
+        console.error(`All ${maxRetries} attempts failed for collection "${collection}".`);
+        return [];
+      }
+
+      // Optional: delay between retries (e.g., exponential backoff)
+      await new Promise(res => setTimeout(res, 500 * attempt));
     }
-
-    const products = res.body.data.collection.products;
-    if (!products) {
-      return [];
-    }
-
-    return reshapeProducts(removeEdgesAndNodes(products));
-
-  } catch (error) {
-    console.error('Error fetching prodcuts for collection ${collection}:', error);
-    return [];
   }
 
+  return [];
 }
 
 export async function getCollections(): Promise<Collection[]> {
