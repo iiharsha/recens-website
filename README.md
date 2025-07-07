@@ -1,6 +1,6 @@
 ## Recens
 
-Womens's Fashion Brand Website
+Fashion Brand Website
 
 ## Tech Stack
 
