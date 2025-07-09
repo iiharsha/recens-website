@@ -6,6 +6,7 @@ import { Menu as MenuType } from '@/lib/shopify/types';
 import SubMenu from './SubMenu';
 
 const Menu = ({ menu }: { menu: MenuType[] }) => {
+
     return (
         <>
             {menu.length ? (
