@@ -31,7 +31,7 @@ export default function CoutureCollectionPage() {
             <div className="max-w-4xl mx-auto px-4 py-2">
                 <div className="w-full aspect-[4/3] relative overflow-hidden shadow-2xl">
                     <Image
-                        src="/images/couture-image.jpeg"
+                        src="/images/coutureimage.webp"
                         alt="couture collection image"
                         fill
                         style={{
