@@ -17,7 +17,6 @@ import "swiper/css/thumbs";
 
 // types
 import { Product } from "@/lib/shopify/types";
-import { tenorsans } from "@/fonts/fonts";
 
 const ProductSlider = ({ product }: { product: Product }) => {
   // swiper
@@ -29,7 +28,7 @@ const ProductSlider = ({ product }: { product: Product }) => {
   return (
     <div className="sticky top-1">
       <div className="flex flex-col items-center justify-center gap-[24px] pb-[24px] md:hidden">
-        <h2 className={`${tenorsans.variable} text-[clamp(28px,18px_+_2vw,40px)] font-tenor font-semibold leading-[1] text-darkPurple`}>
+        <h2 className="text-[clamp(28px,18px_+_2vw,40px)] font-semibold leading-[1] text-dark">
           {product.title}
         </h2>
       </div>
@@ -55,7 +54,7 @@ const ProductSlider = ({ product }: { product: Product }) => {
             setIsEnd(s.isEnd);
             setIsStart(s.isBeginning);
           }}
-          className="w-full max-w-[80%]"
+          className="border border-black/20 w-full max-w-[80%]"
         >
           {product.images.map((image, i) => (
             <SwiperSlide
@@ -108,11 +107,11 @@ const ProductSlider = ({ product }: { product: Product }) => {
         onSwiper={setThumbsSwiper}
         slidesPerView="auto"
         spaceBetween={8}
-        className="mt-4 [&_.swiper-slide-thumb-active]:border-darkPurple [&_.swiper-slide:not(.swiper-slide-thumb-active)]:border-transparent"
+        className="[&_.swiper-slide-thumb-active]:border-darkPurple [&_.swiper-slide:not(.swiper-slide-thumb-active)]:border-transparent"
       >
         {product.images.map((image, i) => (
           <SwiperSlide
-            className="relative aspect-[7/10] !w-[100px] cursor-pointer overflow-hidden border-2"
+            className="mt-2 relative aspect-[7/10] !w-[100px] cursor-pointer overflow-hidden border-2"
             key={i}
           >
             <Image

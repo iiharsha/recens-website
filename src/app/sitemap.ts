@@ -2,7 +2,8 @@
 
 export const dynamic = 'force-dynamic';
 
-import { getCollections, getPages, getProducts } from "@/lib/shopify";
+import { getCollections } from "@/lib/shopify/queries/collection";
+import {  getPages, getProducts } from "@/lib/shopify/queries/page";
 import { validateEnvironmentVariables } from "@/lib/utils";
 import { MetadataRoute } from "next";
 

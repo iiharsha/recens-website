@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 export default function OpenCart({ quantity }: { quantity?: number }) {
   return (
     <div className="relative">
@@ -9,7 +7,7 @@ export default function OpenCart({ quantity }: { quantity?: number }) {
 
       {quantity ? (
         <div
-          className="absolute right-0 top-0 h-4 w-4 rounded-full bg-dark/95 text-[11px] text-[10px] text-white"
+          className="absolute right-0 top-0 h-4 w-4 rounded-full bg-dark/95 text-[10px] text-white"
           role="figure"
         >
           {quantity}

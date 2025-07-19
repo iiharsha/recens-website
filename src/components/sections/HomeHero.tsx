@@ -1,43 +1,56 @@
-"use client"
+'use client';
 
-import { useEffect, useState } from "react"
-import Image from "next/image"
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
-const heroImages = [
-  "https://ik.imagekit.io/nc0cicxqm/DSC05769-landscape3.webp?",
-  "https://ik.imagekit.io/nc0cicxqm/pink-heroimage-1035.webp?",
-  "https://ik.imagekit.io/nc0cicxqm/IMG_5968_converted.webp?",
-  // Add more image URLs here
-]
+const mobileImages = [
+  // Add more mobile images if needed
+  '/images/heroimage1mb.webp',
+  '/images/heroimage2mb.webp',
+];
 
-export default function HomeVideo() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+const desktopImages = [
+  '/images/heroimage1dtop.webp',
+  '/images/heroimage2dtop.webp',
+  // Add more desktop images if needed
+];
+
+export default function HomeHero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect screen size on client (hydration-safe)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length)
-    }, 3000) // Change image every 3 seconds
-    return () => clearInterval(timer)
-  }, [])
+      setCurrentIndex((prev) => (prev + 1) % (isMobile ? mobileImages.length : desktopImages.length));
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isMobile]);
+
+  const images = isMobile ? mobileImages : desktopImages;
 
   return (
-    <div className="pointer-events-none relative h-[250px] xs:h-[320px] sm:h-[320px] -top-[60px] sm:-top-[80px] -bottom-[40px] select-none md:h-[calc(100vh_-_80px)]">
-      <div className="relative w-full h-[40vh] xs:h-[50vh] sm:h-[50vh] md:h-[100vh] ">
-        {heroImages.map((src, index) => (
-          <Image
-            className={`object-cover transition-opacity duration-1000 ${index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
-            alt={`Hero Image ${index + 1}`}
-            key={src}
-            src={src}
-            fill
-            priority
-            sizes="(max-width: 768px) 480px, 1440px"
-          />
-        ))}
-      </div>
+    <div className="relative w-full aspect-[2/3] sm:aspect-[5/4] md:aspect-[16/9] select-none overflow-hidden">
+      {images.map((src, index) => (
+        <Image
+          key={src}
+          src={src}
+          alt={`Hero Image ${index + 1}`}
+          fill
+          priority={index === 0}
+          sizes="100vw"
+          className={`object-cover transition-opacity duration-1000 absolute inset-0 ${index === currentIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+        />
+      ))}
     </div>
-  )
+  );
 }
-
 

@@ -1,26 +1,29 @@
 // shopify
-import { getProductRecommendations } from '@/lib/shopify';
+import { getProductRecommendations } from '@/lib/shopify/queries/product';
 
 // components
 import ProductCard from '@/components/product/ProductCard';
-import { tenorsans } from '@/fonts/fonts';
 
 const RecommendedItems = async ({ productId }: { productId: string }) => {
   const products = await getProductRecommendations(productId);
+
+  if (products.length === 0) return null;
+
   return (
-    <div className="flex w-full items-center justify-center py-[48px]">
-      <div className="flex max-w-full flex-col items-center justify-center gap-[48px] md:w-[904px]">
-        <h2 className={` ${tenorsans.variable} font-tenor w-full text-center font-semibold text-3xl text-[clamp(28px,20px_+_2vw,40px)] font-medium md:text-left`}>
-          Recommended
+    <section className="w-full px-4 sm:px-6 lg:px-8 mt-12">
+      <div className="mx-auto w-full max-w-[1440px] flex flex-col items-center space-y-6">
+        <h2 className="text-center text-[24px] font-medium font-mont">
+          You may also like
         </h2>
-        <div className="grid w-full grid-cols-2 items-start justify-center gap-x-[4px] gap-y-[16px] xs:gap-x-[16px] md:gap-[32px] lg:grid-cols-3">
+        <div className="grid w-full max-w-6xl grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
           {products.map((product, i) => (
-            <ProductCard key={i} product={product} delay={i * 0.5} />
+            <ProductCard key={product.handle} product={product} delay={i * 0.6} />
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
 export default RecommendedItems;
+

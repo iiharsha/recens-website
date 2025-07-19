@@ -7,7 +7,7 @@ import {
   getCart,
   removeFromCart,
   updateCart,
-} from "@/lib/shopify";
+} from "@/lib/shopify/queries/cart";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
@@ -26,7 +26,7 @@ export async function addItem(
   if (!cartId || !cart) {
     cart = await createCart();
     cartId = cart.id;
-    await cookieStore.set("cartId", cartId);
+    cookieStore.set("cartId", cartId);
   }
 
   if (!selectedVariantId) {

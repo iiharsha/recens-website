@@ -20,9 +20,9 @@ export default function FilterList({ list, title }: { list: ListItem[]; title?: 
         <>
             <nav className="flex items-center justify-center gap-x-8">
                 {title ? (
-                    <h3 className="hidden font-lora text-xs text-darkPurple md:block md:text-lg">{title}</h3>
+                    <h3 className="hidden text-[16px] mb-2 text-dark md:block">{title}</h3>
                 ) : null}
-                <ul className="hidden items-center justify-center gap-4 md:flex">
+                <ul className="hidden items-center justify-center gap-4 md:flex mb-2">
                     <FilterItemList list={list} />
                 </ul>
                 <ul className="md:hidden">

@@ -1,10 +1,9 @@
-import { getCollection, getCollectionProducts } from "@/lib/shopify"
+import { getCollection, getCollectionProducts } from "@/lib/shopify/queries/collection"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Grid from "@/components/grid"
 import ProductGridItems from "@/components/layout/product-grid-items"
 import { defaultSort, sorting } from "@/lib/constants"
-import { tenorsans } from "@/fonts/fonts"
 
 export const runtime = "nodejs"
 
@@ -45,24 +44,24 @@ export default async function CategoryPage({
     })
 
     return (
-        <section>
+        <section className="mt-8 md:mt-24">
             {products.length === 0 ? (
                 <p className="py-3 text-lg">{`No products found in this collection`}</p>
             ) : (
-                <div className="flex flex-col items-center justify-center gap-[48px]">
-                    <div className="space-y-4 space-x-4">
-                        <h2 className={`${tenorsans.variable} px-2 font-semibold text-3xl capitalize font-tenor flex items-center justify-center`}>
+                <div className="flex flex-col mx-auto gap-[32px]">
+                    <div className="space-y-1 flex flex-col items-center justify-center">
+                        <h2 className="font-semibold text-[24px] capitalize text-center">
                             {collectionData.title}
                         </h2>
                         {
                             collectionData.description && (
-                                <p className="max-w-4xl text-lg text-gray-900">
+                                <p className="max-w-4xl text-[15px] text-center">
                                     {collectionData.description}
                                 </p>
                             )
                         }
                     </div>
-                    <Grid className="grid-cols-2 items-center justify-center sm:grid-cols-2 lg:grid-cols-3 px-2">
+                    <Grid className="grid-cols-2 md:grid-cols-2 lg:grid-cols-4 max-w-screen">
                         <ProductGridItems products={products} />
                     </Grid>
                 </div>

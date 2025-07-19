@@ -4,26 +4,24 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import clsx from 'clsx';
-import { getNumberWithOrdinal } from '@/lib/utils';
 import { Product } from '@/lib/shopify/types';
-import { tenorsans } from '@/fonts/fonts';
+import Link from 'next/link';
 
 const ProductCard = ({
   product,
-  rank,
-  duration = 0.5
+  duration = 0.6
 }: {
   product: Product;
-  rank?: number;
   delay?: number;
   duration?: number;
 }) => {
-  const [activeImage, setActiveImage] = useState('main');
+
+  const [activeImage, setActiveImage] = useState<'main' | 'hover'>('main');
 
   return (
     <LazyMotion features={domAnimation}>
       <m.article
-        className="relative flex w-[180px] flex-col items-center justify-center gap-[4px] sm:w-[280px]"
+        className="group w-full h-full "
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ ease: 'easeOut', duration }}
@@ -34,18 +32,19 @@ const ProductCard = ({
           onMouseEnter={() => setActiveImage('hover')}
           onMouseLeave={() => setActiveImage('main')}
         >
-          <div className="relative aspect-[7/10] h-[257px] overflow-hidden sm:h-[420px]">
-            {rank !== undefined && (
-              <div className="absolute left-0 top-0 z-10 flex aspect-square w-[20%] max-w-[56px] items-center justify-center bg-white/50 text-[clamp(16px,4px_+_2vw,24px)] font-bold text-veryDarkPurple/70 backdrop-blur-sm">
-                {getNumberWithOrdinal(rank)}
-              </div>
-            )}
+          <div className="relative aspect-[2/3] overflow-hidden">
             <Image
               src={product.images[0]?.url || ''}
               alt="product image"
               fill
-              sizes="(min-width: 768px) 280px, 180px"
-              className={clsx('object-cover transition-all duration-500 will-change-transform', {
+              sizes="
+              (max-width: 640px) 50vw,
+              (max-width: 1024px) 33vw,
+              (max-width: 1280px) 25vw,
+              (max-width: 1536px) 20vw,
+              16vw
+              "
+              className={clsx('object-cover transition-opacity duration-300 ease-in-out', {
                 'opacity-0': activeImage !== 'main',
                 'opacity-100': activeImage === 'main'
               })}
@@ -54,24 +53,32 @@ const ProductCard = ({
               src={product.images[1]?.url || ''}
               alt="product image"
               fill
-              sizes="(min-width: 768px) 280px, 180px"
-              className={clsx('object-cover transition-all duration-500 will-change-transform', {
+              sizes="
+              (max-width: 640px) 50vw,
+              (max-width: 1024px) 33vw,
+              (max-width: 1280px) 25vw,
+              (max-width: 1536px) 20vw,
+              16vw
+              "
+              className={clsx('object-cover transition-opacity duration-300 ease-in-out', {
                 'opacity-0': activeImage !== 'hover',
                 'opacity-100': activeImage === 'hover'
               })}
             />
           </div>
         </a>
-        <a href={'/product/' + product.handle}>
-          <h3 className={`${tenorsans.variable} font-tenor text-center text-[clamp(20px,8px_+_2vw,20px)] font-semibold transition-all duration-300 hover:text-purple`}>
-            {product.title}
-          </h3>
-        </a>
-        <p className="text-[clamp(14px,6px_+_2vw,14px)] text-black/80">
-          {`RS. ${Intl.NumberFormat("en-IN", {
-            useGrouping: true,
-          }).format(Number(product.priceRange.minVariantPrice.amount))}`}
-        </p>
+        <div className="flex flex-col justify-center-safe">
+          <Link href={'/product/' + product.handle} className='px-2 py-1'>
+            <h3 className="truncate overflow-hidden capitalize text-center text-[14px] font-semibold">
+              {product.title}
+            </h3>
+            <p className="text-center text-[12px] text-black/70">
+              {`RS. ${Intl.NumberFormat("en-IN", {
+                useGrouping: true,
+              }).format(Number(product.priceRange.minVariantPrice.amount))}`}
+            </p>
+          </Link>
+        </div>
       </m.article>
     </LazyMotion>
   );

@@ -1,22 +1,28 @@
 'use client';
-
-import { useMediaQuery } from 'react-responsive';
-
-// components
-import ProductCard from '@/components/product/ProductCard';
-
-// types
 import { Product } from '@/lib/shopify/types';
+import NewArrivalsProductCard from './ProductCard';
+import useIsMobile from '@/hooks/useIsMobile';
+import ProductListSwiper from './ProductListSwiper';
 
 const ProductList = ({ products }: { products: Product[] }) => {
-  const isLg = useMediaQuery({ query: '(min-width: 1024px)' });
+  const isMobile = useIsMobile();
+
   return (
-    <div className="grid w-full grid-cols-2 items-start justify-center gap-x-[4px] gap-y-[16px] xs:gap-x-[16px] md:gap-[32px] lg:grid-cols-3">
-      {products.map((product, i) => (
-        <ProductCard key={i} product={product} />
-      ))}
+    <div className="w-full">
+      {isMobile ? (
+        <ProductListSwiper products={products} />
+      ) : (
+        <div className="grid gap-1"
+          style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 2fr))' }}>
+          {products.map((product, i) => (
+            <NewArrivalsProductCard key={product.id || i} product={product} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
 export default ProductList;
+
+

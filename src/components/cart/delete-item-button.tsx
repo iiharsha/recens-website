@@ -1,8 +1,8 @@
 'use client';
 
-import { removeItem } from '@/components/cart/actions';
+import { removeItem } from './actions';
 import LoadingDots from '@/components/common/loading-dots';
-import type { CartItem } from '@/lib/shopify/types';
+import type { CartItem } from '@/lib/shopify/types/cart';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { useActionState } from 'react';
@@ -36,13 +36,15 @@ function SubmitButton() {
 }
 
 export function DeleteItemButton({ item }: { item: CartItem }) {
+  if (!item.id) return null;
   const [message, formAction, isPending] = useActionState(removeItem, null);
   const itemId = item.id;
   const actionWithVariant = formAction.bind(null, itemId);
 
   return (
     <form action={actionWithVariant}>
-      <SubmitButton />
+      <SubmitButton
+      />
       <p aria-live="polite" className="sr-only" role="status">
         {message}
       </p>

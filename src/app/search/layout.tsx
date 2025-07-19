@@ -1,8 +1,7 @@
-import { Suspense } from 'react';
 
 export default function SearchLayout({ children }: { children: React.ReactNode }) {
   return (
-    <section className="mx-auto my-[48px] flex w-full max-w-[904px] flex-col items-center justify-center gap-[48px]">
+    <section className="w-screen px-4 lg:px-8 py-8">
       {children}
     </section>
   );

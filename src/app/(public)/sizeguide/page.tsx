@@ -1,5 +1,3 @@
-import { tenorsans } from "@/fonts/fonts";
-
 export default function SizeGuide() {
     const sizeData = {
         sizes: [
@@ -12,30 +10,30 @@ export default function SizeGuide() {
     };
 
     return (
-        <main className="max-w-4xl mx-auto mt-4 mb-12 px-4 py-4 space-y-8 min-h-[50vh]">
-            <h2 className={`${tenorsans.variable} font-tenor text-center text-3xl sm:text-4xl font-semibold mb-6`}>Size Guide</h2>
-            <p className="text-lg text-center text-gray-800">**All the sizes mentioned below are in inches**</p>
+        <main className="max-w-4xl mx-auto mt-8 mb-12 px-4 py-4 space-y-3 min-h-[50vh]">
+            <h2 className="text-xl sm:text-2xl font-medium mb-2">Size Guide</h2>
+            <span className="text-xs">All the sizes mentioned below are in inches*</span>
             <div>
                 <table className="w-full border border-stone-300">
-                    <thead className="bg-stone-300">
+                    <thead className="bg-[#e8e6e2]">
                         <tr>
                             {["Size", "Bust", "Waist", "Hips"].map((col) => (
-                                <th key={col} className={`${tenorsans.variable} font-tenor border border-gray-300 px-4 py-2 text-left`}>{col}</th>
+                                <th key={col} className="border border-[#dddcd8] font-medium text-[15px] px-4 py-2 text-left">{col}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {sizeData.sizes.map((row, idx) => (
-                            <tr key={idx} className="odd:bg-gray-100">
+                            <tr key={idx} className="odd:bg-[#EFEDE9]">
                                 {Object.values(row).map((val, i) => (
-                                    <td key={i} className="border border-gray-300 px-4 py-2">{val}</td>
+                                    <td key={i} className="border border-[#dddcd8] px-4 py-2 text-[14px]">{val}</td>
                                 ))}
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-            <p className="text-gray-800 text-center text-lg">
+            <p className="text-dark text-center text-[14px]">
                 Length may vary by product. Please refer to the product description for specific measurements.
             </p>
         </main>

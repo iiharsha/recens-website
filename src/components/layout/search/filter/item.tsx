@@ -53,7 +53,7 @@ function SortFilterItem({ item }: { item: SortFilterItem }) {
         prefetch={!active ? false : undefined}
         href={href}
         className={clsx(
-          "w-full text-purple hover:underline hover:underline-offset-4",
+          "w-full text-dark hover:underline hover:underline-offset-4 text-center",
           {
             "underline underline-offset-4": active,
           }

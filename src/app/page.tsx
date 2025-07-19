@@ -1,7 +1,7 @@
 import HomeHero from "@/components/sections/HomeHero";
 import NewArrivals from "@/components/sections/NewArrivals/NewArrivals";
 import AboutUs from "@/components/sections/AboutUs";
-import Discounts from "@/components/sections/Discounts";
+import HomePagePics from "@/components/sections/HomePagePics";
 
 export const metadata = {
   description: "Recens - Women's Fashion Wear",
@@ -29,13 +29,9 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <div className="relative">
-        <HomeHero />
-        <div className="mt-2 xs:mt-6 md:mt-0 z-10">
-          <Discounts />
-        </div>
-      </div>
+      <HomeHero />
       <NewArrivals />
+      <HomePagePics />
       <AboutUs />
     </main>
   )

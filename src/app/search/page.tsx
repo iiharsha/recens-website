@@ -2,7 +2,7 @@ import Grid from "@/components/grid"
 import ProductGridItems from "@/components/layout/product-grid-items"
 import FilterList from "@/components/layout/search/filter"
 import { defaultSort, sorting } from "@/lib/constants"
-import { getProducts } from "@/lib/shopify"
+import { getProducts } from "@/lib/shopify/queries/product"
 
 export const runtime = "nodejs"
 
@@ -25,24 +25,26 @@ export default async function SearchPage({
 
   return (
     <>
-      {searchValue ? (
-        <p>
-          {products.length === 0
-            ? "There are no products that match "
-            : `Showing ${products.length} ${resultsText} for `}
-          <span className="font-bold">&quot;{searchValue}&quot;</span>
-        </p>
-      ) : null}
+      <div className="mt-[70px] flex flex-col">
+        {searchValue ? (
+          <p className="mb-2 mx-4">
+            {products.length === 0
+              ? "There are no products that match "
+              : `Showing ${products.length} ${resultsText} for `}
+            <span className="font-bold">&quot;{searchValue}&quot;</span>
+          </p>
+        ) : null}
 
-      <div className="flex-none">
-        <FilterList list={sorting} title="Sort by" />
+
+        <div className="flex items-center justify-center border border-dark/80 mx-4">
+          <FilterList list={sorting} title="Filter" />
+        </div>
+        {products.length > 0 ? (
+          <Grid className="grid-cols-2 md:grid-cols-2 lg:grid-cols-4 max-w-screen px-4 mt-4">
+            <ProductGridItems products={products} />
+          </Grid>
+        ) : null}
       </div>
-
-      {products.length > 0 ? (
-        <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems products={products} />
-        </Grid>
-      ) : null}
     </>
   )
 }

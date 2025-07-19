@@ -1,5 +1,5 @@
 
-import { getCart } from '@/lib/shopify';
+import { getCart } from '@/lib/shopify/queries/cart';
 import { cookies } from 'next/headers';
 import CartModal from './modal';
 

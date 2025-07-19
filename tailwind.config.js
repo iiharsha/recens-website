@@ -15,10 +15,11 @@ module.exports = {
         xs: "480px",
       },
       colors: {
-        primary: "#ffffff",
+        primary: "#faf9f6",
         secondary: "#d4d4d4",
         tertiary: "#b3b3b3",
         dark: "#2b2b2b",
+        white: "#FAF9F6",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -61,8 +62,6 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)"],
-        tenor: "var(--font-tenor)",
         mont: "var(--font-montserrat)",
       },
       keyframes: {

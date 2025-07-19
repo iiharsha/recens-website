@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { getPage } from "@/lib/shopify";
+import { getPage } from "@/lib/shopify/queries/page";
 import { notFound } from "next/navigation";
-import { tenorsans } from "@/fonts/fonts";
 
 type PageProps = {
   params: Promise<{
@@ -47,14 +46,14 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <h1 className={`${tenorsans.variable} mb-8 text-center text-[clamp(32px,20px_+_2vw,40px)] font-tenor font-bold text-dark md:mb-16`}>
+      <h1 className="mb-8 text-left text-xl sm:text-2xl font-medium md:mb-16">
         {pageData.title}
       </h1>
       <div
         dangerouslySetInnerHTML={{ __html: pageData.body as string }}
-        className={`${tenorsans.variable} leading-lose text-center text-[16px] text-black prose-headings:my-4 prose-headings:font-tenor prose-headings:text-[clamp(20px,16px_+_2vw,20px)] prose-headings:font-semibold prose-headings:text-black md:text-left`}
+        className="leading-6 text-center text-[16px] prose-headings:my-4 prose-headings:font-mont prose-headings:text-[18px] prose-headings:font-medium prose-headings:text-black md:text-left"
       />
-      <p className="mt-16 text-sm italic leading-relaxed text-dark md:leading-normal">
+      <p className="mt-16 text-[16px] italic leading-relaxed md:leading-normal">
         {`This document was last updated on ${new Intl.DateTimeFormat(
           undefined,
           {

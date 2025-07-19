@@ -30,11 +30,12 @@ button {
   @apply relative w-full border border-transparent bg-dark px-[32px] py-[16px] font-bold text-primary shadow-md;
 }
 
-
-
-
 .hover-line {
   @apply relative transition-all duration-300 before:absolute before:bottom-0 before:left-1/2 before:h-[1px] before:w-0 before:bg-dark before:opacity-0 before:transition-all before:duration-300 before:will-change-transform before:-translate-x-1/2 hover:text-dark hover:before:w-full hover:before:opacity-100;
+}
+
+.hover-line-two {
+  @apply relative transition-all duration-300 before:absolute before:bottom-0 before:left-1/2 before:h-[1px] before:w-0 before:bg-white before:opacity-0 before:transition-all before:duration-300 before:will-change-transform before:-translate-x-1/2 hover:before:w-full hover:before:opacity-100;
 }
 
 .header-link {
@@ -43,7 +44,7 @@ button {
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* #ffffff */
+    --background: 45 29% 97%; /* #ffffff */
     --foreground: 0 0% 17%; /* A darker shade for contrast */
     --card: 0 0% 100%;
     --card-foreground: 0 0% 17%;
@@ -68,6 +69,7 @@ button {
     --chart-4: 43 10% 40%; /* Muted Yellow */
     --chart-5: 27 10% 35%; /* Warm Beige */
     --radius: 0.5rem;
+    --swiper-theme-color: #000;
   }
 
   .dark {
@@ -106,3 +108,40 @@ button {
     @apply bg-background text-foreground;
   }
 }
+
+/* Ensure Swiper container doesn't overflow */
+.swiper {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Center slide content */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Place this in your globals.css */
+.custom-swiper-scrollbar {
+  position: relative;
+  height: 8px;
+  margin-top: 1.5rem auto 0; /* Push scrollbar lower (equiv. to mt-6 in Tailwind) */
+  background-color: #e5e7eb; /* Tailwind gray-200 */
+  border-radius: 9999px; /* Rounded full */
+  overflow: hidden;
+  max-width: 80%;
+}
+
+/* Scrollbar drag handle */
+.custom-swiper-scrollbar .swiper-scrollbar-drag {
+  background-color: #9ca3af; /* Tailwind gray-400 */
+  border-radius: 9999px;
+  transition: background-color 0.2s ease-linear;
+  width: 10px;
+}
+
+.custom-swiper-scrollbar .swiper-scrollbar-drag:hover {
+  background-color: #6b7280; /* Tailwind gray-500 */
+}
+

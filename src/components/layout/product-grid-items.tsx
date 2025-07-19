@@ -10,7 +10,7 @@ export default function ProductGridItems({ products }: { products: Product[] }) 
         <>
             {products.map((product, i) => (
                 <Grid.Item key={product.handle}>
-                    <ProductCard product={product} delay={(i % 3) * 0.25} />
+                    <ProductCard product={product} delay={(i % 4) * 0.4} />
                 </Grid.Item>
             ))}
         </>

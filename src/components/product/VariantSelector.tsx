@@ -56,7 +56,7 @@ export function VariantSelector({
           // This is the "magic" that will cross check possible variant combinations and preemptively
           // disable combinations that are not available. For example, if the color gray is only available in size medium,
           // then all other sizes should be disabled.
-          const filtered = Array.from(optionSearchParams.entries()).filter(
+          const filtered = Object.entries(optionSearchParams.entries()).filter(
             ([key, value]) =>
               options.find(
                 (option) =>

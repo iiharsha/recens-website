@@ -7,7 +7,7 @@ import { Suspense } from 'react';
 
 // shopify
 import { HIDDEN_PRODUCT_TAG } from '@/lib/constants';
-import { getProduct } from '@/lib/shopify';
+import { getProduct } from '@/lib/shopify/queries/product';
 
 // components
 import ProductDescription from '@/components/product/ProductDescription';
@@ -92,7 +92,7 @@ const ProductPage = async ({
                     __html: JSON.stringify(productJsonLd),
                 }}
             />
-            <section className="flex w-full flex-col items-center justify-center py-[24px] md:py-[48px]">
+            <section className="mt-24 flex w-full flex-col items-center justify-center py-[24px] md:py-[48px]">
                 <h2 className="sr-only">Product Information</h2>
                 <article className="flex w-full max-w-[95%] flex-col items-stretch justify-center gap-4 md:w-[1000px] md:flex-row">
                     <div className="max-w-[450px] md:w-1/2">

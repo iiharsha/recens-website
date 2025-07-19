@@ -1,12 +1,9 @@
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 import { ReactNode, Suspense } from "react";
 import Loading from "@/components/common/Loading";
 import Header from "@/components/sections/Header";
-import { getMenu } from "@/lib/shopify";
-import Head from "next/head";
 import { Viewport } from "next";
 import { ensureStartsWith } from "@/lib/utils";
 
@@ -19,9 +16,6 @@ const Footer = dynamic(() => import("@/components/sections/Footer"), {
 // styles
 import "@/styles/globals.css";
 import { montserrat } from "@/fonts/fonts";
-import Script from "next/script";
-
-const inter = Inter({ subsets: ["latin"] });
 
 // metadata
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
@@ -78,19 +72,17 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={montserrat.className}>
       <head>
         <link rel="canonical" href="https://recens.co.in" key="canonical" />
       </head>
-      <body className={`${montserrat.className} bg-[#FFFFFF]`}>
+      <body className={`font-mont text-dark bg-white`}>
         {/* Google Tag Manager & Analytics */}
         <GoogleTagManager gtmId="GTM-PWQRW7QQ" />
         <GoogleAnalytics gaId="G-8XGNZRV5GF" />
+        <Header />
         <Suspense fallback={<Loading />}>
-          <Header />
-          <main>
-            {children}
-          </main>
+          {children}
           <Footer />
         </Suspense>
       </body>

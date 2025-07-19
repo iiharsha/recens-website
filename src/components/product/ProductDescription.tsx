@@ -16,10 +16,7 @@ import { AddToCart } from '../cart/add-to-cart';
 import { Product } from '@/lib/shopify/types';
 import { useSearchParams } from 'next/navigation';
 import { VariantSelector } from './VariantSelector';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import SizeGuide from '../common/SizeGuide';
-import { tenorsans } from "@/fonts/fonts";
 
 export type Combination = {
   id: string;
@@ -64,7 +61,7 @@ const ProductDescription = ({ product }: { product: Product }) => {
 
   return (
     <div className="sticky top-1 flex flex-col items-start justify-start gap-4 px-6 text-darkPurple">
-      <h2 className={`${tenorsans.variable} hidden text-[clamp(28px,18px_+_2vw,40px)] font-tenor leading-[1] md:block`}>
+      <h2 className="hidden text-[clamp(28px,18px_+_2vw,40px)] font-tenor leading-[1] md:block">
         {product.title}
       </h2>
       <p className="text-[18px] flex flex-col">

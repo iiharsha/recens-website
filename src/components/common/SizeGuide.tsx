@@ -1,7 +1,6 @@
 "use client"
 
 import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { tenorsans } from "@/fonts/fonts";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
@@ -47,9 +46,9 @@ export default function SizeGuide() {
             <DialogClose className="absolute top-2 right-2 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200">
               <X className="w-6 h-6" />
             </DialogClose>
-            <h2 className={`${tenorsans.variable} font-tenor text-center text-3xl sm:text-4xl font-semibold mb-6`}>Size Guide</h2>
-            <h3 className="text-center text-[18px]">How to Measure</h3>
-            <p className="text-center text-[14px]">
+            <h2 className="text-center text-3xl sm:text-2xl font-semibold mb-6">Size Guide</h2>
+            <h3 className="text-center text-[15px] font-medium">How to Measure</h3>
+            <p className="text-[14px]">
               All you need is a tape measure and these guidelines and you're one step away from your ultimate Recens fit. Once you're all set, grab your tape measure and focus on the following…
             </p>
             <div className="flex flex-col gap-2 text-[12px] p-4">
@@ -74,7 +73,7 @@ export default function SizeGuide() {
                     {["Size", "Bust", "Waist", "Hips"].map((col) => (
                       <th
                         key={col}
-                        className={`${tenorsans.variable} font-tenor border border-gray-300 px-4 py-2 text-left`}
+                        className="border border-gray-300 px-4 py-2 text-left"
                       >
                         {col}
                       </th>
