@@ -44,7 +44,7 @@ export default function HomeHero() {
           src={src}
           alt={`Hero Image ${index + 1}`}
           fill
-          priority={index === 0}
+          priority
           sizes="100vw"
           className={`object-cover transition-opacity duration-1000 absolute inset-0 ${index === currentIndex ? 'opacity-100' : 'opacity-0'
             }`}
